@@ -82,8 +82,8 @@ p {
     color: rgba(0, 0, 0, 0.6);
   }
   .img-shopping {
-    width: 322px;
-    height: 241px;
+    width: 265px;
+    height: 198px;
   }
   
   .support {
@@ -119,8 +119,8 @@ p {
     }
   
     .img-shopping {
-      width: 265px;
-      height: 198px;
+      width: 322px;
+      height: 241px;
     }
   }
   
@@ -132,6 +132,7 @@ p {
 
     .wrp-content{
         margin-left: 40px;
+        flex-grow:1
     }
 
     .shop-content{
