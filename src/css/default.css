@@ -1,0 +1,27 @@
+body {
+  background-color: #fff;
+  color: #111;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  margin: 0;
+}
+
+.container {
+  max-width: 375px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 24px;
+  }
+}
