@@ -1,0 +1,21 @@
+body.dark {
+  background-color: #202024;
+  color: #fff;
+}
+
+.dark .header-container {
+  border-color: #fff;
+  background-color: #111;
+}
+
+.dark .header-nav-link {
+  color: #fff;
+}
+
+.dark .header-burger-menu {
+  fill: #fff;
+}
+
+.dark .logo-text {
+  fill: #fff;
+}
