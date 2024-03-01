@@ -1,0 +1,270 @@
+p,h1,h2,h3,h4,h5,h6 {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+ul{
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: currentColor;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    /* display: block;
+    max-width: 100%;
+    height: auto; */
+    /* width: 100%; */
+}
+
+.pop-up {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 24, 35, 0.494);
+    top: 0;
+    left: 0;
+    /* opacity: 0;
+    visibility: hidden; */
+}
+
+.modal {
+    width: 579px;
+    background: #fff;
+    border: 2px solid #111;
+    border-radius: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+}
+
+.modal-btn {
+    background-color: transparent;
+    border: none;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    position: absolute;
+    right: 24px;
+    top: 24px;
+}
+
+.modal-btn:hover {
+    fill: #4f2ee8;
+}
+
+.modal-btn-icon:hover {
+    stroke: #4f2ee8;
+}
+
+.text-item {
+    width: 192px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.text-hello {
+font-weight: 700;
+font-size: 24px;
+line-height: 1.16667;
+letter-spacing: -0.04em;
+color: #111;
+margin-bottom: 8px;
+}
+
+.text-name {
+font-style: italic;
+font-weight: 400;
+font-size: 14px;
+line-height: 1.28571;
+letter-spacing: -0.04em;
+color: #b4afaf;
+}
+
+.text-women {
+    width: 279px;
+    height: 70px;
+font-weight: 400;
+font-size: 14px;
+line-height: 1.28571;
+letter-spacing: -0.04em;
+color: #111;
+}
+
+.icon-item {
+    width: 115px;
+    height: 32px;
+    margin-bottom: 40px;
+}
+
+.add-btn {
+    border: 2px solid #4f2ee8;
+border-radius: 40px;
+width: 499px;
+height: 64px;
+font-weight: 700;
+font-size: 18px;
+line-height: 1.33333;
+letter-spacing: -0.01em;
+text-transform: uppercase;
+color: #111;
+}
+
+.add-btn:hover {
+    background: #4f2ee8;
+    color: #fff;
+}
+
+@media screen and (min-width: 320px) {
+    .modal {
+        max-width: 335px;
+        max-height: 762px;
+    }
+
+    .text-hello {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 1.125;
+        letter-spacing: -0.04em;
+    }
+
+    .text-name {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.16667;
+        letter-spacing: -0.04em;
+    }
+
+    .text-women {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.28571;
+        letter-spacing: -0.04em;
+    }
+
+    .modal-btn-add {
+    max-width: 211px;
+    max-height: 46px;
+    margin: 0 auto;
+    display: block;
+    }
+
+    .add-btn {
+        max-width: 211px;
+        max-height: 46px;
+        font-size: 14px;
+        line-height: 1.28571;
+        letter-spacing: -0.01em;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .modal {
+        max-width: 579px;
+        max-height: 465px;
+    }
+
+    .text-hello {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 1.16667;
+        letter-spacing: -0.04em;
+        color: #111;
+        margin-bottom: 8px;
+    }
+        
+    .text-name {
+        font-style: italic;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.28571;
+        letter-spacing: -0.04em;
+        color: #b4afaf;
+    }
+        
+    .text-women {
+        width: 279px;
+        height: 70px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.28571;
+        letter-spacing: -0.04em;
+        color: #111;
+    }
+
+    .modal-btn-add {
+        max-width: 499px;
+        max-height: 64px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .add-btn {
+    max-width: 499px;
+    max-height: 64px;
+    font-size: 18px;
+    line-height: 1.33333;
+    letter-spacing: -0.01em;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .modal {
+        max-width: 579px;
+        max-height: 465px;
+    }
+
+    .text-hello {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 1.16667;
+        letter-spacing: -0.04em;
+        color: #111;
+        margin-bottom: 8px;
+    }
+        
+    .text-name {
+        font-style: italic;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.28571;
+        letter-spacing: -0.04em;
+        color: #b4afaf;
+    }
+        
+    .text-women {
+        width: 279px;
+        height: 70px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.28571;
+        letter-spacing: -0.04em;
+        color: #111;
+    }
+
+    .modal-btn-add {
+        max-width: 499px;
+        max-height: 64px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .add-btn {
+        max-width: 499px;
+        max-height: 64px;
+        font-size: 18px;
+        line-height: 1.33333;
+        letter-spacing: -0.01em;
+    }
+}
