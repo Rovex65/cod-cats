@@ -62,7 +62,7 @@
 .books-category .books-list {
   display: grid;
   grid-template-columns: 100%;
-  align-items: center;
+  align-items: start;
   grid-gap: 25px;
 }
 
