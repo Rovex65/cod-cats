@@ -157,52 +157,215 @@ p {
 
   /* Shopping card */
 
-  .book-card {
-    border: 2px solid rgba(79, 46, 232, 0.4);
-    border-radius: 16px;
+.shop-list-book-card {
+  border: 2px solid rgba(79, 46, 232, 0.4);
+  border-radius: 16px;
+  padding: 14px;
+  width: 335px;
+  height: 170px;
+  display: flex;
+  flex-direction: row;
+}
+
+.shop-list-book-image {
+  border-radius: 8px;
+  width: 100px;
+  height: 142px;
+  display: flex;
+  align-self: center;
+}
+
+.shop-list-book-info {
+  margin-left: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.shop-list-card-header {
+  display: flex;
+  margin-bottom: 8px;
+  width: 193px;
+  height: 36px;
+  justify-content: space-between;
+}
+
+.shop-list-book-title-container {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  width: 144px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.shop-list-book-title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.125;
+  letter-spacing: -0.04em;
+  margin-bottom: 4px;
+}
+
+.shop-list-book-genre {
+  font-size: 12px;
+  line-height: 1.16667;
+  letter-spacing: 0.03em;
+  color: #b4afaf;
+}
+
+.delete-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%; 
+  background-color: #4F2EE8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+svg {
+  color: #fff;
+}
+
+.shop-list-book-description {
+  line-height: 1.28571;
+  letter-spacing: -0.04em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 193px;
+}
+
+.shop-list-product-footer {
+  display: flex;
+  height: 16px;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.shop-list-book-author {
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.16667;
+  letter-spacing: -0.04em;
+  color: #b4afaf;
+  display: flex;
+  align-self: flex-end;
+}
+
+.shop-list-book-stores {
+  display: flex;
+  justify-content: flex-end;
+  width: 56px;
+  height: 16px;
+  gap: 8px;
+  align-items: center;
+}
+
+.shop-list-amazon {
+  width: 32px;
+  height: 11px;
+}
+
+.shop-list-apple {
+  width: 16px;
+  height: 16px;
+}
+
+.shop-list-amazon, .shop-list-apple {
+  filter: grayscale(100%);
+}
+
+.shopping-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+.shop-list-book-card {
+    padding: 24px;
+    width: 704px;
+    height: 213px;
+}
+
+.shop-list-book-image {
+    width: 116px;
+    height: 165px;
+}
+
+.shop-list-book-info {
+    margin-left: 24px;
+}
+
+.shop-list-card-header {
+    margin-bottom: 14px;
+    width: 516px;
+    height: 36px;
+}
+
+.shop-list-book-title-container {
+    display: block; 
+    -webkit-line-clamp: initial;
+    -webkit-box-orient: initial;
+    text-overflow: initial;
+    overflow: initial;
+}
+
+.delete-icon {
+    width: 34px;
+    height: 34px;
+}
+
+.shop-list-book-description {
+    width: 508px;
+}
+
+.shop-list-product-footer {
+    height: 27px;
+    margin-top: 35px;
+}
+
+.shop-list-book-stores {
+    width: 92px;
+    height: 27px;
+    gap: 16px;
+}
+
+.shop-list-amazon {
+    width: 48px;
+    height: 15px;
+}
+
+.shop-list-apple {
+    width: 28px;
+    height: 28px;
+}
+}
+
+
+@media screen and (min-width: 1280px) {
+.shop-list-book-card {
     padding: 24px;
     width: 996px;
     height: 213px;
-    display: flex;
-    flex-direction: row;
 }
 
-.book-image {
-    border-radius: 8px;
+.shop-list-book-image {
+    width: 116px;
+    height: 165px;
 }
 
-.book-info {
-    margin-left: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.card-header {
-    display: flex;
-    margin-bottom: 16px;
-    justify-content: space-between;
-    gap: 660px;
-}
-
-.book-title-container {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.book-title {
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 1.125;
-    letter-spacing: -0.04em;
-}
-
-.book-genre {
-    font-size: 12px;
-    line-height: 1.16667;
-    letter-spacing: 0.03em;
-    color: #b4afaf;
+.shop-list-card-header {
+  margin-bottom: 16px;
+  width: 808px;
 }
 
 .delete-icon {
@@ -214,46 +377,19 @@ p {
     align-items: center;
     justify-content: center;
     border: none;
-    
 }
 
-svg {
-    color: #fff;
+.shop-list-book-description {
+    width: 808px;
 }
 
-.book-description {
-    line-height: 1.28571;
-    letter-spacing: -0.04em;
-    
-}
-
-.product-footer {
-    display: flex;
+.shop-list-product-footer {
     height: 27px;
-    justify-content: space-between;
-    
 }
 
-.book-author {
-    font-style: italic;
-    font-size: 12px;
-    line-height: 1.16667;
-    letter-spacing: -0.04em;
-    color: #b4afaf;
-    display: flex;
-    align-self: flex-end;
-}
-
-.book-stores {
-    display: flex;
-    justify-content: flex-end;
+.shop-list-book-stores {
     width: 92px;
     height: 27px;
     gap: 16px;
 }
-
-.amazon, .books {
-    align-self: center;
-    filter: grayscale(100%);
 }
-
