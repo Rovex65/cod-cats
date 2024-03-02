@@ -1,4 +1,4 @@
-import"./assets/styles-f98a38a6.js";import{a as e}from"./assets/vendor-0cb09735.js";function r({author:o,book_image:t,title:s,_id:a}){return`<li class="book-item" data-book-id="${a}">
+import"./assets/styles-0c903ff6.js";import{a as e}from"./assets/vendor-0cb09735.js";function r({author:o,book_image:t,title:s,_id:a}){return`<li class="book-item" data-book-id="${a}">
               <div class="book-cover" data-js-book>
                   <img src="${t}" alt="book cover" />
                   <div class="quick-view">Quick view</div>
