@@ -1,20 +1,17 @@
-const modalOpen = document.querySelector('.add-remove-btn');
-const modalClose = document.querySelector('.modal-btn');
-const modal = document.querySelector('.backdrop');
+const burgerMenuButton = document.querySelector('.header-burger-menu');
+const modalMenu = document.querySelector('.header-modal-menu');
 
-document.addEventListener('DOMContentLoaded', () => {
-  modalOpen.addEventListener('click', () => {
-    document.body.style.overflowY = 'hidden';
-  });
+burgerMenuButton.addEventListener('click', function() {
+  modalMenu.classList.toggle('active');
 
-  modalClose.addEventListener('click', () => {
-    document.body.style.overflowY = 'auto';
-    modal.classList.remove('is-open');
-  });
-
-  const modalHeight = modal.clientHeight;
-  if (modalHeight < 762) {
-    modal.style.height = '762px';
-    modal.style.overflowY = 'scroll';
+const burgerIcon = document.querySelector('.header-burger-menu svg');
+  if (modalMenu.classList.contains('active')) {
+    burgerIcon.innerHTML = `
+      <use href="../img/icons.svg#icon-close"></use>
+    `;
+  } else {
+    burgerIcon.innerHTML = `
+      <use href="../img/icons.svg#icon-menu"></use>
+    `;
   }
 });
