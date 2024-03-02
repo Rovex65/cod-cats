@@ -1,31 +1,3 @@
-p,h1,h2,h3,h4,h5,h6 {
-    margin-bottom: 0;
-    margin-top: 0;
-}
-
-ul{
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    list-style: none;
-}
-
-a{
-    text-decoration: none;
-    color: currentColor;
-}
-
-button {
-    cursor: pointer;
-}
-
-img {
-    /* display: block;
-    max-width: 100%;
-    height: auto; */
-    /* width: 100%; */
-}
-
 .pop-up {
     position: fixed;
     width: 100%;
@@ -46,7 +18,7 @@ img {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 40px;
+    padding: 30px;
 }
 
 .modal-btn {
@@ -68,13 +40,19 @@ img {
     stroke: #4f2ee8;
 }
 
-.text-item {
+.modal-image {
     width: 192px;
-    text-align: left;
-    margin-bottom: 20px;
+    height: 281px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    border: 0;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    margin-top: 10px;
 }
 
-.text-hello {
+.modal-book-title {
 font-weight: 700;
 font-size: 24px;
 line-height: 1.16667;
@@ -83,7 +61,7 @@ color: #111;
 margin-bottom: 8px;
 }
 
-.text-name {
+.modal-book-author {
 font-style: italic;
 font-weight: 400;
 font-size: 14px;
@@ -92,8 +70,7 @@ letter-spacing: -0.04em;
 color: #b4afaf;
 }
 
-.text-women {
-    width: 279px;
+.modal-book-descr {
     height: 70px;
 font-weight: 400;
 font-size: 14px;
@@ -102,17 +79,30 @@ letter-spacing: -0.04em;
 color: #111;
 }
 
-.icon-item {
-    width: 115px;
-    height: 32px;
-    margin-bottom: 40px;
+.shop-list-amazon,
+.shop-list-apple {
+    filter: grayscale(100%);
 }
 
-.add-btn {
+.shop-list-amazon:hover {
+    filter: drop-shadow(0px 3px 3px rgba(0,0,0,.35));
+}
+
+.shop-list-apple:hover {
+    filter: drop-shadow(0px 3px 3px rgba(0,0,0,.35));
+}
+
+.modal-btn-add {
+
+}
+
+.modal-add-btn {
     border: 2px solid #4f2ee8;
 border-radius: 40px;
 width: 499px;
 height: 64px;
+display: block;
+align-items: center;
 font-weight: 700;
 font-size: 18px;
 line-height: 1.33333;
@@ -121,7 +111,7 @@ text-transform: uppercase;
 color: #111;
 }
 
-.add-btn:hover {
+.modal-add-btn:hover {
     background: #4f2ee8;
     color: #fff;
 }
@@ -132,21 +122,21 @@ color: #111;
         max-height: 762px;
     }
 
-    .text-hello {
+    .modal-text-hello {
         font-weight: 700;
         font-size: 16px;
         line-height: 1.125;
         letter-spacing: -0.04em;
     }
 
-    .text-name {
+    .modal-text-name {
         font-weight: 400;
         font-size: 12px;
         line-height: 1.16667;
         letter-spacing: -0.04em;
     }
 
-    .text-women {
+    .modal-text-women {
         font-weight: 400;
         font-size: 14px;
         line-height: 1.28571;
@@ -155,12 +145,11 @@ color: #111;
 
     .modal-btn-add {
     max-width: 211px;
-    max-height: 46px;
     margin: 0 auto;
     display: block;
     }
 
-    .add-btn {
+    .modal-add-btn {
         max-width: 211px;
         max-height: 46px;
         font-size: 14px;
@@ -175,7 +164,7 @@ color: #111;
         max-height: 465px;
     }
 
-    .text-hello {
+    .modal-text-hello {
         font-weight: 700;
         font-size: 24px;
         line-height: 1.16667;
@@ -184,7 +173,7 @@ color: #111;
         margin-bottom: 8px;
     }
         
-    .text-name {
+    .modal-text-name {
         font-style: italic;
         font-weight: 400;
         font-size: 14px;
@@ -193,7 +182,7 @@ color: #111;
         color: #b4afaf;
     }
         
-    .text-women {
+    .modal-text-women {
         width: 279px;
         height: 70px;
         font-weight: 400;
@@ -205,12 +194,11 @@ color: #111;
 
     .modal-btn-add {
         max-width: 499px;
-        max-height: 64px;
         margin: 0 auto;
         display: block;
     }
 
-    .add-btn {
+    .modal-add-btn {
     max-width: 499px;
     max-height: 64px;
     font-size: 18px;
@@ -219,13 +207,13 @@ color: #111;
     }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
     .modal {
         max-width: 579px;
         max-height: 465px;
     }
 
-    .text-hello {
+    .modal-text-hello {
         font-weight: 700;
         font-size: 24px;
         line-height: 1.16667;
@@ -234,7 +222,7 @@ color: #111;
         margin-bottom: 8px;
     }
         
-    .text-name {
+    .modal-text-name {
         font-style: italic;
         font-weight: 400;
         font-size: 14px;
@@ -243,7 +231,7 @@ color: #111;
         color: #b4afaf;
     }
         
-    .text-women {
+    .modal-text-women {
         width: 279px;
         height: 70px;
         font-weight: 400;
@@ -255,12 +243,11 @@ color: #111;
 
     .modal-btn-add {
         max-width: 499px;
-        max-height: 64px;
         margin: 0 auto;
         display: block;
     }
 
-    .add-btn {
+    .modal-add-btn {
         max-width: 499px;
         max-height: 64px;
         font-size: 18px;
