@@ -8,44 +8,70 @@
 </head>
 <body>
 
-<button id="openMenuBtn">
-  <span class="btn-text">Menu</span>
-  <span class="arrow-icon"></span>
-</button>
-
-
-<div id="menuModal" class="modal">
-  <div class="modal-content">
-    
-    <div class="header">
-      <div class="logo">
-        <img src="logo.png" alt="Bookshelf Logo">
-      </div>
-    
-      <label class="background-switch">
-        <input type="checkbox" id="backgroundToggle">
-        <span class="slider"></span>
-      </label>
-      <div class="x-close">
-        <img src="close-icon.png" alt="Close">
-      </div>
+  <header class="header">
+    <div class="container content-wrapper">
+      <!-- nav-bar -->
+      <nav class="nav">
+        <!-- logo -->
+        <div class="logo">
+          <a href="../index.html" class="header-logo-link">
+            <svg class="header-logo-svg" width="24" height="24">
+              <use href="#"></use>
+            </svg>
+            <svg class="header-logo-name" width="77" height="14">
+              <use href="#"></use>
+            </svg>
+          </a>
+        </div>
+      </nav>
+  
+      <!-- theme switcher -->
+      <div class="switch-signup-wrapper">
+        <div class="switch_burger-menu-wrapper">
+          <div id="theme-switcher">
+            <input
+              type="checkbox"
+              class="switch-theme-checkbox"
+              id="switch-theme-checkbox"
+            />
+            <label
+              for="switch-theme-checkbox"
+              class="switch-theme-checkbox-label"
+            >
+              <span class="switch-ball"></span>
+            </label>
+          </div>
+  
+          <button type="button" class="burger-menu-close-btn">
+            <svg class="mobile-menu-svg" width="28" height="28">
+              <use href="#"></use>
+            </svg>
+          </button>
+        </div>
+      </header>
+    <!-- burger menu -->
+  
+    <div class="burger-menu">
+      <ul class="burger-menu-list">
+        <ul class="nav-list">
+          <li><a href="../index.html" class="nav-link-home">Home</a></li>
+          <li>
+            <a href="../shop-list.html" class="nav-link-shop-list">Shopping list
+              <svg>
+                <use href="#"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </ul>
+      <button class="burger-logout-btn" type="button">
+        Log out
+        <svg width="20px" height="20px">
+          <use href="#"></use>
+        </svg>
+      </button>
     </div>
-    
-    <div class="body">
-      <button class="home-btn">HOME</button>
-      <button class="shopping-list-btn">Shopping List</button>
-      
-      <div class="book-covers">
-        <!-- Обложки книг -->
-      </div>
-    </div>
-    
-    <div class="footer">
-      <button class="logout-btn">Log out</button>
-    </div>
-  </div>
-</div>
-
+  
 <script src="script.js"></script>
 </body>
 </html>
