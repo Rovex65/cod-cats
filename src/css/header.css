@@ -118,7 +118,7 @@ input:checked + .slider:before {
     gap: 4px;
   }
 
-  .link-home {
+  .nav-link-active {
     font-weight: 700;
     display: flex;
     justify-content: center;
