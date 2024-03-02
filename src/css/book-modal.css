@@ -10,7 +10,6 @@
 }
 
 .modal {
-    width: 579px;
     background: #fff;
     border: 2px solid #111;
     border-radius: 18px;
@@ -18,7 +17,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 30px;
+    padding: 40px;
 }
 
 .modal-btn {
@@ -40,6 +39,10 @@
     stroke: #4f2ee8;
 }
 
+.modal-wrap {
+    margin-bottom: 44px;
+}
+
 .modal-image {
     width: 192px;
     height: 281px;
@@ -47,9 +50,7 @@
     flex-wrap: wrap;
     align-content: flex-start;
     border: 0;
-    margin-bottom: 30px;
-    margin-right: 20px;
-    margin-top: 10px;
+    margin-right: 24px;
 }
 
 .modal-book-title {
@@ -57,6 +58,7 @@ font-weight: 700;
 font-size: 24px;
 line-height: 1.16667;
 letter-spacing: -0.04em;
+text-align: left;
 color: #111;
 margin-bottom: 8px;
 }
@@ -68,6 +70,7 @@ font-size: 14px;
 line-height: 1.28571;
 letter-spacing: -0.04em;
 color: #b4afaf;
+margin-bottom: 20px;
 }
 
 .modal-book-descr {
@@ -116,27 +119,38 @@ color: #111;
     color: #fff;
 }
 
+.modal-btn-text {
+    width: 324px;
+    height: 28px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: -0.04em;
+    margin: 0 auto;
+    text-align: center;
+}
+
 @media screen and (min-width: 320px) {
     .modal {
         max-width: 335px;
         max-height: 762px;
     }
 
-    .modal-text-hello {
+    .modal-book-title {
         font-weight: 700;
         font-size: 16px;
         line-height: 1.125;
         letter-spacing: -0.04em;
     }
 
-    .modal-text-name {
+    .modal-book-author {
         font-weight: 400;
         font-size: 12px;
         line-height: 1.16667;
         letter-spacing: -0.04em;
     }
 
-    .modal-text-women {
+    .modal-book-descr {
         font-weight: 400;
         font-size: 14px;
         line-height: 1.28571;
@@ -155,6 +169,18 @@ color: #111;
         font-size: 14px;
         line-height: 1.28571;
         letter-spacing: -0.01em;
+        margin-bottom: 8px;
+    }
+
+    .modal-btn-text {
+        width: 242px;
+        height: 36px;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 12px;
+        letter-spacing: -0.04em;
+        margin: 0 auto;
+        text-align: center;
     }
 }
 
@@ -164,7 +190,11 @@ color: #111;
         max-height: 465px;
     }
 
-    .modal-text-hello {
+    .modal-wrap {
+        display: flex;
+    }
+
+    .modal-book-title {
         font-weight: 700;
         font-size: 24px;
         line-height: 1.16667;
@@ -173,7 +203,7 @@ color: #111;
         margin-bottom: 8px;
     }
         
-    .modal-text-name {
+    .modal-book-author {
         font-style: italic;
         font-weight: 400;
         font-size: 14px;
@@ -182,7 +212,7 @@ color: #111;
         color: #b4afaf;
     }
         
-    .modal-text-women {
+    .modal-book-descr {
         width: 279px;
         height: 70px;
         font-weight: 400;
@@ -204,6 +234,18 @@ color: #111;
     font-size: 18px;
     line-height: 1.33333;
     letter-spacing: -0.01em;
+    margin-bottom: 8px;
+    }
+
+    .modal-btn-text {
+        width: 324px;
+        height: 28px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 14px;
+        letter-spacing: -0.04em;
+        margin: 0 auto;
+        text-align: center;
     }
 }
 
@@ -213,7 +255,7 @@ color: #111;
         max-height: 465px;
     }
 
-    .modal-text-hello {
+    .modal-book-title {
         font-weight: 700;
         font-size: 24px;
         line-height: 1.16667;
@@ -222,7 +264,7 @@ color: #111;
         margin-bottom: 8px;
     }
         
-    .modal-text-name {
+    .modal-book-author {
         font-style: italic;
         font-weight: 400;
         font-size: 14px;
@@ -231,8 +273,7 @@ color: #111;
         color: #b4afaf;
     }
         
-    .modal-text-women {
-        width: 279px;
+    .modal-book-descr {
         height: 70px;
         font-weight: 400;
         font-size: 14px;
@@ -253,5 +294,17 @@ color: #111;
         font-size: 18px;
         line-height: 1.33333;
         letter-spacing: -0.01em;
+        margin-bottom: 8px;
+    }
+
+    .modal-btn-text {
+        width: 324px;
+        height: 28px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 14px;
+        letter-spacing: -0.04em;
+        margin: 0 auto;
+        text-align: center;
     }
 }
