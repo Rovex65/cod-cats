@@ -1,25 +1,3 @@
-body {
-  background-color: #fff;
-  color: #111;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  margin: 0;
-}
-
-a {
-  text-decoration: none;
-  color: currentColor;
-}
-
-ul {
-  list-style: none;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 0;
-}
-
-/* HEADER */
-
 .header-container {
   border: 1.5px solid #111;
   border-radius: 0 0 8px 8px;
@@ -27,7 +5,6 @@ ul {
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  margin-bottom: 40px;
 }
 
 .header-logo-link {
@@ -162,7 +139,7 @@ input:checked + .slider:before {
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .header-container {
     padding: 0 24px;
   }
