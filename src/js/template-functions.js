@@ -30,21 +30,21 @@ function temlpateTopBooksCategory({ list_name, books }) {
           </section>`;
 }
 
-export function getTemplateTopBooks(bookData) {
+export function templateTopBooks(bookData) {
   return bookData.map(temlpateTopBooksCategory).join('');
 }
 
-export function getTemplateFullCategory(bookData) {
+export function templateFullCategory(bookData) {
   return '';
 }
-export function getTemplateListCategories(bookData) {
+export function templateListCategories(bookData) {
   return bookData.map(templateNameCategory).join();
 }
 
-export function getTemplatePopUpBook(book) {
+export function templatePopUpBook(book) {
   return ''; // return pop up markup
 }
 
-export function getTemplateShopListBooks(bookData) {
+export function templateShopListBooks(bookData) {
   return bookData.map(templateShopListBook).join();
 }

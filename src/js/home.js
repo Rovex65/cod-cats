@@ -1,11 +1,11 @@
-import { getTemplateTopBooks } from './template-api';
+import { templateTopBooks } from './template-functions';
 import { BookApi } from './book-api';
 
 const booksApi = new BookApi();
 const booksWrap = document.querySelector('.books-wrapper');
 
 function renderBooks(booksWrap, booksData) {
-  const markup = getTemplateTopBooks(booksData);
+  const markup = templateTopBooks(booksData);
   booksWrap.insertAdjacentHTML('beforeend', markup);
 }
 
