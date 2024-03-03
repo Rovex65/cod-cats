@@ -20,6 +20,14 @@
   margin-right: 76px;
 }
 
+.logo-text {
+  fill: #111;
+}
+
+.shop-list-icon {
+  fill: #111;
+}
+
 .header-buttons {
   display: flex;
   align-items: center;
@@ -34,6 +42,7 @@
 .header-burger-menu {
   border: none;
   background: transparent;
+  fill: #111;
 }
 
 .header-burger-menu:hover {

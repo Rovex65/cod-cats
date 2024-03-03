@@ -19,3 +19,33 @@ body.dark {
 .dark .logo-text {
   fill: #fff;
 }
+
+.dark .shop-list-icon {
+  fill: #fff;
+}
+
+.dark.active {
+  color: #eac645;
+}
+
+.dark.sidebar-categories-name {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dark.button {
+  background-color: #111;
+  color: #fff;
+}
+
+.dark.modal {
+  background-color: #202024;
+  border-color: #fff;
+}
+
+.dark.modal-btn-icon {
+  fill: #fff;
+}
+
+.dark.modal-add-btn {
+  color: #fff;
+}
