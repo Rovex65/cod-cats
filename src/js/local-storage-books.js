@@ -1,58 +1,47 @@
-export function updateShoppingList(e) {
+export function updateShoppingList(e, bookData) {
   const target = e.target;
   const shoppingList = getShoppingList();
-  const button = target.closest('[data-add]');
 
-  if (button) {
-    button.classList.toggle('added');
+  target.classList.toggle('added');
 
-    if (button.classList.contains('added')) {
-      addToShopList(target, shoppingList);
-      return;
-    }
-
-    removeFromShopList(target, shoppingList);
+  if (target.classList.contains('added')) {
+    addToShopList(target, shoppingList, bookData);
+    return;
   }
+  removeFromShopList(target, shoppingList);
 }
 
 export function getShoppingList() {
   return JSON.parse(localStorage.getItem('shoppingList')) || [];
 }
 
-function addToShopList(target, shoppingList) {
-  const bookObj = createBookObject(target);
+function addToShopList(target, shoppingList, bookData) {
+  const bookObj = createBookObject(bookData);
   shoppingList.push(bookObj);
 
   setShoppingList(shoppingList, bookObj);
   target.textContent = 'Remove from the shopping list';
 }
 
-function createBookObject(target) {
-  const bookId = '643282b2e85766588626a0fc';
-  const image = target.closest().dataset.image;
-  const title = target.closest().dataset.title;
-  const category = target.closest().dataset.category;
-  const description = target.closest().dataset.description;
-  const author = target.closest().dataset.author;
-  const buyLinks = [
-    {
-      name: 'Amazon',
-      url: 'https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299?tag=NYTBSREV-20',
-    },
-    {
-      name: 'Apple Books',
-      url: 'https://goto.applebooks.apple/9780735211292?at=10lIEQ',
-    },
-  ];
+function createBookObject(bookData) {
+  const {
+    _id,
+    list_name,
+    author: bookAuthor,
+    book_image,
+    buy_links,
+    description: bookDescription,
+    title: bookTitle,
+  } = bookData;
 
   return {
-    bookId,
-    image,
-    title,
-    category,
-    author,
-    description,
-    buyLinks,
+    bookId: _id,
+    image: book_image,
+    title: bookTitle,
+    category: list_name,
+    description: bookDescription,
+    author: bookAuthor,
+    buyLinks: buy_links,
   };
 }
 
@@ -62,8 +51,10 @@ function setShoppingList(shoppingList) {
 
 // remove from SL
 function removeFromShopList(target, shoppingList) {
-  shoppingList.filter(({ bookId }) => bookId !== target.dataset.id);
+  const newList = shoppingList.filter(
+    ({ bookId }) => bookId !== target.dataset.id
+  );
 
-  setShoppingList(shoppingList);
+  setShoppingList(newList);
   target.textContent = 'Add to shopping list';
 }
