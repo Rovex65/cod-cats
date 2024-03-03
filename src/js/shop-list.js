@@ -4,11 +4,11 @@ import image from '../img/bcg-img-shop-list.png'
 const listElem = document.querySelector(".shopping-list");
 
 const storedValue = localStorage.getItem("saved-books");
-    if (storedValue === null || storedValue === undefined) {
-        renderEmptyPage();
-    } else {
-        renderCartItems();
-    }
+if (!storedValue || JSON.parse(storedValue).length === 0) {
+  renderEmptyPage();
+} else {
+  renderCartItems();
+}
 
 listElem.addEventListener('click', handleDeleteButtonClick);
 
@@ -26,6 +26,12 @@ function handleDeleteButtonClick(event) {
         cart.splice(index, 1);
         localStorage.setItem("saved-books", JSON.stringify(cart));
       }
+
+      updateMargin();
+
+      if (listElem.querySelectorAll(".shop-list-book-card").length === 0) {
+        renderEmptyPage();
+      }
     }
   }
 }
@@ -34,8 +40,12 @@ function updateMargin() {
   const items = listElem.querySelectorAll(".shop-list-book-card");
   const titleElem = document.querySelector(".title-shopping"); 
 
-  if (items.length !== 0) {
-    titleElem.classList.add('not-empty-cart');
+  if (items.length === 0) {
+    titleElem.classList.add('empty-cart');
+    titleElem.classList.remove('not-empty-cart');
+  } else {
+      titleElem.classList.remove('empty-cart');
+      titleElem.classList.add('not-empty-cart');
   }
 }
 
@@ -43,7 +53,7 @@ function renderCartItems() {
   const cartItems = JSON.parse(localStorage.getItem("saved-books")) || [];
   const renderedHTML = templateShopListBooks(cartItems);
   listElem.insertAdjacentHTML("beforeend", renderedHTML);
-  updateMargin()
+  updateMargin();
 }
 
 function renderEmptyPage() {
