@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 const save = '../img/save.png';
 const save2 = '../img/save@2x.png';
 const hope = '../img/hope.png';
@@ -16,6 +17,26 @@ const vision = '../img/vision.png';
 const vision2 = '../img/vision@2x.png';
 const prytula = '../img/prytula.png';
 const prytula2 = '../img/prytula@2x.png.';
+=======
+const save = require('../');
+const save2 = require('../img/save@2x.png');
+const hope = require('../img/hope.png');
+const hope2 = require('../img/hope@2x.png');
+const banc = require('../img/24u.png');
+const banc2 = require('../img/24u2x.png');
+const medical = require('../img/medical.png');
+const medical2 = require('../img/medical@2x.png');
+const sans = require('../img/sans.png');
+const sans2 = require('../img/sans@2x.png');
+const razom = require('../img/razom.png');
+const razom2 = require('../img/razom@2x.png');
+const hunger = require('../img/hunger.png');
+const hunger2 = require('../img/hunger@2x.png');
+const vision = require('../img/vision.png');
+const vision2 = require('../img/vision@2x.png');
+const prytula = require('../img/prytula.png');
+const prytula2 = require('../img/prytula@2x.png.');
+>>>>>>> Stashed changes
 const fonds = [
   {
     title: 'Save the Children',
