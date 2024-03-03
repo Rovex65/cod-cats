@@ -39,7 +39,6 @@
 .header-burger-menu:hover {
   fill: #4f2ee8;
 }
-/* switch */
 
 .switch {
   position: relative;
@@ -91,8 +90,6 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateX(22px);
 }
-
-/* -------------------------- */
 
 @media screen and (min-width: 768px) {
   .header-container {
