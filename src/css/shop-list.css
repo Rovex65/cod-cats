@@ -1,5 +1,5 @@
 .wrp-sheet {
-  padding-top: 40px;
+  padding-top: 110px;
 }
 
 .wrp-sheet > .support-ukraine {
@@ -19,8 +19,16 @@
   font-size: 32px;
   line-height: 108%;
   letter-spacing: -0.04em;
+}
+
+.empty-cart {
   margin-bottom: 120px;
 }
+
+.not-empty-cart {
+  margin-bottom: 40px;
+}
+
 .style-title {
   color: #4f2ee8;
 }
@@ -69,8 +77,12 @@
 
   .title-shopping {
     font-size: 48px;
+  }
+
+  .empty-cart {
     margin-bottom: 140px;
   }
+  
 
   .section-container {
     min-width: 700px;
