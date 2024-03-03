@@ -7,7 +7,7 @@
                   <p class="book-title">${i}</p>
                   <p class="book-author">${e}</p>
               </div>
-          </li>`}function c(e){const{book_image:s,title:i,list_name:r,description:o,author:t,buy_links:l,_id:d}=e;return`<div class="shop-list-book-card">
+          </li>`}function c(e){const{book_image:s,title:i,list_name:r,description:o,author:t,buy_links:l}=e;return`<li class="shop-list-book-card">
   <img src="${s}" class="shop-list-book-image">
   <div class="shop-list-book-info">
       <div class="shop-list-card-header">
@@ -30,9 +30,9 @@
           </div>
       </div>
   </div>
-</div>`}function p({list_name:e,books:s}){console.log(e,s);const i=s.map(a).join("");return`<section class="books-category">
+</li>`}function p({list_name:e,books:s}){console.log(e,s);const i=s.map(a).join("");return`<section class="books-category">
               <h3 class="category-title">${e}</h3>
               <ul class="books-list">${i}</ul>
               <button type="button" class="button" data-js-category="${e}">See more</button>
-          </section>`}function u(e){return e.map(p).join("")}function f(e){return e.map(c).join()}export{f as a,u as t};
-//# sourceMappingURL=template-functions-2eed998b.js.map
+          </section>`}function d(e){return e.map(p).join("")}function u(e){return e.map(c).join("")}export{u as a,d as t};
+//# sourceMappingURL=template-functions-584fc702.js.map
