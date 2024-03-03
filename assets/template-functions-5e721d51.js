@@ -35,4 +35,4 @@
               <ul class="books-list">${i}</ul>
               <button type="button" class="button" data-js-category="${e}">See more</button>
           </section>`}function d(e){return e.map(p).join("")}function u(e){return e.map(c).join("")}export{u as a,d as t};
-//# sourceMappingURL=template-functions-dc4d1d98.js.map
+//# sourceMappingURL=template-functions-5e721d51.js.map
