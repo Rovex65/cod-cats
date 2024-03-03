@@ -33,6 +33,12 @@
   width: 8px;
   height: 100%;
   background-color: #e0e0e0;
+  transform: translateY(0);
+  transition: transform 0.5s ease-out;
+}
+
+.scrolling-line:hover {
+  transform: translateY(100%);
 }
 
 .active {
