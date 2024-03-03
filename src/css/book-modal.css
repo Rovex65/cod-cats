@@ -5,8 +5,8 @@
     background-color: rgba(30, 24, 35, 0.494);
     top: 0;
     left: 0;
-    /* opacity: 0;
-    visibility: hidden; */
+    opacity: 0;
+    visibility: hidden;
 }
 
 .modal {
@@ -82,16 +82,33 @@ letter-spacing: -0.04em;
 color: #111;
 }
 
-.shop-list-amazon,
-.shop-list-apple {
+.modal-logos-wrap {
+    display: flex;
+    gap: 20px;
+}
+
+.modal-shop-list-amazon {
+    width: 62px;
+    height: 19px;
+    margin-top: 6.5px;
+    margin-bottom: 6.5px;
+}
+
+.modal-shop-list-apple {
+    width: 33px;
+    height: 32px;
+}
+
+.modal-shop-list-amazon,
+.modal-shop-list-apple {
     filter: grayscale(100%);
 }
 
-.shop-list-amazon:hover {
+.modal-shop-list-amazon:hover {
     filter: drop-shadow(0px 3px 3px rgba(0,0,0,.35));
 }
 
-.shop-list-apple:hover {
+.modal-shop-list-apple:hover {
     filter: drop-shadow(0px 3px 3px rgba(0,0,0,.35));
 }
 
@@ -130,10 +147,30 @@ color: #111;
     text-align: center;
 }
 
+.modal-is-open {
+    opacity: 1;
+visibility: visible;
+pointer-events: auto;
+}
+
 @media screen and (min-width: 320px) {
     .modal {
         max-width: 335px;
-        max-height: 762px;
+    }
+
+    .modal-image {
+        width: 192px;
+        height: 281px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        border: 0;
+        margin: 0 auto 14px;
+    }
+
+    .modal-btn {
+        right: 12px;
+        top: 12px;
     }
 
     .modal-book-title {
@@ -181,6 +218,7 @@ color: #111;
         letter-spacing: -0.04em;
         margin: 0 auto;
         text-align: center;
+        color: rgba(17, 17, 17, 0.5);
     }
 }
 
@@ -192,6 +230,21 @@ color: #111;
 
     .modal-wrap {
         display: flex;
+    }
+
+    .modal-btn {
+        right: 24px;
+        top: 24px;
+    }
+
+    .modal-image {
+        width: 192px;
+        height: 281px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        border: 0;
+        margin-right: 24px;
     }
 
     .modal-book-title {
@@ -252,7 +305,21 @@ color: #111;
 @media screen and (min-width: 1280px) {
     .modal {
         max-width: 579px;
-        max-height: 465px;
+    }
+
+    .modal-btn {
+        right: 24px;
+        top: 24px;
+    }
+
+    .modal-image {
+        width: 192px;
+        height: 281px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        border: 0;
+        margin-right: 24px;
     }
 
     .modal-book-title {
