@@ -16,9 +16,9 @@ function templateNameCategory() {
 }
 
 function templateShopListBook(book) {
-  const { book_image, title, list_name, description, author, buy_links, _id } = book;
+  const { book_image, title, list_name, description, author, buy_links } = book;
 
-  return `<div class="shop-list-book-card">
+  return `<li class="shop-list-book-card">
   <img src="${book_image}" class="shop-list-book-image">
   <div class="shop-list-book-info">
       <div class="shop-list-card-header">
@@ -41,7 +41,7 @@ function templateShopListBook(book) {
           </div>
       </div>
   </div>
-</div>`;
+</li>`;
 }
 
 function temlpateTopBooksCategory({ list_name, books }) {
@@ -71,5 +71,5 @@ export function templatePopUpBook(book) {
 }
 
 export function templateShopListBooks(bookData) {
-  return bookData.map(templateShopListBook).join();
+  return bookData.map(templateShopListBook).join('');
 }
