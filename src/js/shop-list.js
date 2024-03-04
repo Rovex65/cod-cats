@@ -5,7 +5,7 @@ import Pagination from 'tui-pagination';
 
 const listElem = document.querySelector(".shopping-list");
 const paginationContainer = document.querySelector(".pagination-container");
-const itemsPerPage = 3; // Змінити кількість елементів на сторінці за потребою
+const itemsPerPage = 3; 
 let currentPage = 1;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -27,17 +27,14 @@ function handleDeleteButtonClick(event) {
         cart.splice(index, 1);
         localStorage.setItem("saved-books", JSON.stringify(cart));
         
-        // Оновлюємо пагінацію
         updatePagination();
 
-        // Перевіряємо, чи видалили останній елемент на поточній сторінці
         const startIdx = (currentPage - 1) * itemsPerPage;
         const endIdx = startIdx + itemsPerPage;
 
         if (index >= startIdx && index < endIdx) {
           updateShoppingList(currentPage);
         } else {
-          // Якщо видалили не на поточній сторінці, тоді викликаємо оновлення пагінації
           updateShoppingList(currentPage);
         }
       }
@@ -91,22 +88,26 @@ function initPagination() {
   const paginationOptions = {
     totalItems: totalItems,
     itemsPerPage: itemsPerPage,
-    visiblePages: 3, // Ваші власні налаштування для видимих сторінок
+    visiblePages: 3,
+  page: 1,
+  centerAlign: false,
+  firstItemClassName: 'tui-first-child',
+  lastItemClassName: 'tui-last-child',
     template: {
-      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-      currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-      moveButton:
-        '<a href="#" class="tui-page-btn tui-page-btn-moveButton">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
-        '</a>',
-      disabledMoveButton:
-        '<span class="tui-page-btn tui-page-btn-disabledMoveButton tui-is-disabled">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
-        '</span>',
-      moreButton:
-        '<a href="#" class="tui-page-btn tui-page-btn-moreButton tui-{{type}}-is-ellip">' +
-        '<span class="tui-ico-ellip">...</span>' +
-        '</a>'
+     page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+        currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+        moveButton:
+          '<a href="#" class="tui-page-btn tui-page-btn-moveButton">' +
+            '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          '</a>',
+        disabledMoveButton:
+          '<span class="tui-page-btn tui-page-btn-disabledMoveButton tui-is-disabled">' +
+            '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          '</span>',
+        moreButton:
+          '<a href="#" class="tui-page-btn tui-page-btn-moreButton tui-{{type}}-is-ellip">' +
+            '<span class="tui-ico-ellip">...</span>' +
+          '</a>'
     }
   };
 
@@ -124,20 +125,14 @@ function updateShoppingList(page) {
   const endIdx = startIdx + itemsPerPage;
   const pageItems = cartItems.slice(startIdx, endIdx);
 
-  listElem.innerHTML = ''; // Видаляємо всі елементи перед оновленням
+  listElem.innerHTML = '';
 
   const renderedHTML = templateShopListBooks(pageItems);
   listElem.innerHTML = renderedHTML;
   updateMargin();
 
-  // Завжди підтягуємо третю книгу з наступної сторінки
-  if (pageItems.length < itemsPerPage) {
-    const nextStartIdx = endIdx;
-    const nextEndIdx = nextStartIdx + 1;
-    const nextPageItems = cartItems.slice(nextStartIdx, nextEndIdx);
-
-    const nextRenderedHTML = templateShopListBooks(nextPageItems);
-    listElem.insertAdjacentHTML("beforeend", nextRenderedHTML);
+  if (cartItems.length === 0) {
+    renderEmptyPage();
   }
 }
 
@@ -147,16 +142,22 @@ function updatePagination() {
   const cartItems = JSON.parse(localStorage.getItem("saved-books")) || [];
   const totalItems = cartItems.length;
 
-  const pagination = new Pagination(paginationContainer, {
+  const paginationOptions = {
     totalItems: totalItems,
     itemsPerPage: itemsPerPage,
     visiblePages: 3,
     centerAlign: true,
     page: currentPage,
-  });
+  };
 
-  pagination.on('afterMove', function (event) {
-    currentPage = event.page;
-    updateShoppingList(currentPage);
-  });
+  if (cartItems.length === 0) {
+    paginationContainer.innerHTML = '';
+  } else {
+    const pagination = new Pagination(paginationContainer, paginationOptions);
+
+    pagination.on('afterMove', function (event) {
+      currentPage = event.page;
+      updateShoppingList(currentPage);
+    });
+  }
 }
