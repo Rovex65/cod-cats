@@ -242,7 +242,7 @@
     flex-wrap: wrap;
     align-content: flex-start;
     border: 0;
-    margin-right: 24px;
+    margin: 0 24px 0 0;
   }
 
   .modal-book-title {
