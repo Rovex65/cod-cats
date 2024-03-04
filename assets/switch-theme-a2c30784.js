@@ -42,7 +42,7 @@
           </section>`}function k({author:t,book_image:o,buy_links:a,description:i,title:e},s){return`<div class="modal">
       <button type="button" class="modal-btn">
         <svg class="modal-btn-icon" width="18" height="18">
-          <use href="../img/icons.svg#icon-close"></use>
+          <use href="/img/icons.svg#icon-close"></use>
         </svg>
       </button>
       <div class="modal-wrap">
@@ -54,8 +54,8 @@
             ${i}
           </p>
           <div class="modal-logos-wrap">
-            <a href="${a[0].url}" target="blank"><img src="../img/amazon.png" alt="logo amazon" class="modal-shop-list-amazon" /></a>
-            <a href="${a[1].url}" target="blank"><img src="../img/book-1x.png" alt="logo apple" class="modal-shop-list-apple" /></a>
+            <a href="${a[0].url}" target="blank"><img src="/img/amazon.png" alt="logo amazon" class="modal-shop-list-amazon" /></a>
+            <a href="${a[1].url}" target="blank"><img src="/img/book-1x.png" alt="logo apple" class="modal-shop-list-apple" /></a>
           </div>
         </div>
       </div>
@@ -67,4 +67,4 @@
         </p>
       </div>
     </div>`}function v(t){return t.map(u).join("")}const n=document.getElementById("toggleSwitch");n.addEventListener("change",g);localStorage.getItem("darkMode")==="true"&&(n.checked=!0,document.body.classList.add("dark"));function g(){n.checked?(document.body.classList.add("dark"),localStorage.setItem("darkMode","true")):(document.body.classList.remove("dark"),localStorage.setItem("darkMode","false"))}export{b as a,f as b,v as c,k as t};
-//# sourceMappingURL=switch-theme-1e5f1cfd.js.map
+//# sourceMappingURL=switch-theme-a2c30784.js.map
