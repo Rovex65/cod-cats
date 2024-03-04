@@ -37,6 +37,7 @@
 .header-burger-menu {
   border: none;
   background: transparent;
+  transition: fill 250ms ease-in-out;
 }
 
 .header-burger-menu:hover {
