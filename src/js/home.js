@@ -3,6 +3,7 @@ import { templateFullCategory } from './template-functions';
 import { templatePopUpBook } from './template-functions';
 // import { getShoppingList } from './local-storage';
 // import { updateShoppingList } from './local-storage';
+import { onModalShow } from './pop-up';
 import { BookApi } from './book-api';
 
 const booksApi = new BookApi();
@@ -32,13 +33,18 @@ getTopBooksFromApi();
 let categoryTitle;
 
 function setActiveCategory(categoryTitle) {
-  const categoriesList = document.querySelectorAll('.sidebar-categories-name a');
-  const category = categoryTitle === 'all-categories' ? 'all-categories' : categoryTitle;
+  const categoriesList = document.querySelectorAll(
+    '.sidebar-categories-name a'
+  );
+  const category =
+    categoryTitle === 'all-categories' ? 'all-categories' : categoryTitle;
 
   for (let i = 0; i < categoriesList.length; i++) {
     categoriesList[i].classList.remove('active');
   }
-  document.querySelector(`[data-category="${category}"]`).classList.add('active');
+  document
+    .querySelector(`[data-category="${category}"]`)
+    .classList.add('active');
 }
 
 function renderCategoryBooks(booksData) {
@@ -107,8 +113,8 @@ export async function getBookById(target) {
   try {
     const bookId = target.closest('.book-item').dataset.bookId;
     bookData = await booksApi.getBookById(bookId);
-
-    renderPopUp(bookData, bookId);
+    // renderPopUp(bookData, bookId);
+    onModalShow(bookData);
   } catch (err) {
     console.log(err);
   }
@@ -128,4 +134,13 @@ mainWrap.addEventListener('click', e => {
 // book add to/remove from the shopping list
 popUpAddBtn.addEventListener('click', e => {
   updateShoppingList(e, bookData);
+});
+
+booksWrap.addEventListener('click', e => {
+  const target = e.target;
+
+  // show book info in popup
+  if (target.closest('.book-item')) {
+    getBookById(target);
+  }
 });

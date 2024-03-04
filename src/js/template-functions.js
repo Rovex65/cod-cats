@@ -45,7 +45,6 @@ function templateShopListBook(book) {
 }
 
 function temlpateTopBooksCategory({ list_name, books }) {
-  console.log(list_name, books);
   const categoryBooks = books.map(templateBook).join('');
 
   return `<section class="books-category">
