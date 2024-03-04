@@ -1,4 +1,5 @@
 .sidebar-bookcategories-container {
+  flex-grow: 1;
   margin: 0 auto;
   position: relative;
   overflow-y: auto;
@@ -25,6 +26,20 @@
 
 .sb-category-item:not(:last-child) {
   margin-bottom: 24px;
+}
+
+.sidebar-categories-name::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar-categories-name::-webkit-scrollbar-thumb,
+.sidebar-categories-name::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 12px;
+}
+
+.sidebar-categories-name::-webkit-scrollbar-thumb {
+    background-color: #e0e0e0;
 }
 
 .scrolling-line {
