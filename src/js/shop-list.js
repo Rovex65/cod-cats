@@ -40,7 +40,7 @@ function handleDeleteButtonClick(event) {
 
       updateMargin();
 
-      const listElem = document.querySelector('.shop-list');
+      const listElem = document.querySelector('.shopping-list');
       if (listElem.querySelectorAll('.shop-list-book-card').length === 0) {
         renderEmptyPage();
       }
