@@ -14,7 +14,7 @@
 @import url('./book-modal.css');
 @import url('./shop-list.css');
 @import url('./modal-menu.css');
-@import url('pagination.css');
+@import url('./dark-mode.css');
 
 :root {
   font-family: 'DM Sans', sans-serif;

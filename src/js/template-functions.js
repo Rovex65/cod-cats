@@ -1,6 +1,6 @@
 function templateBook({ author, book_image, title, _id }) {
   return `<li class="book-item" data-book-id="${_id}">
-              <div class="book-cover" data-js-book>
+              <div class="book-cover">
                   <img src="${book_image}" alt="book cover" />
                   <div class="quick-view">Quick view</div>
               </div>
@@ -15,8 +15,7 @@ function templateNameCategory() {
   return ''; // return <li> with name of category
 }
 
-function templateShopListBook(book) {
-  const { book_image, title, list_name, description, author, buy_links } = book;
+function templateShopListBook({ book_image, title, list_name, description, author, buy_links }) {
 
   return `<li class="shop-list-book-card">
   <img src="${book_image}" class="shop-list-book-image">
@@ -36,8 +35,8 @@ function templateShopListBook(book) {
       <div class="shop-list-product-footer">
           <p class="shop-list-book-author">${author}</p>
           <div class="shop-list-book-stores">
-              <a href="${buy_links.find(link => link.name === 'Amazon').url}" target="_blank"><img src="./img/amazon-2x.png" class="shop-list-amazon"></a>
-              <a href="${buy_links.find(link => link.name === 'Apple Books').url}" target="_blank"><img src="./img/book-2x.png" class="shop-list-apple"></a>
+              <a href="${buy_links[0].url}" target="_blank"><img src="./img/amazon-2x.png" class="shop-list-amazon"></a>
+              <a href="${buy_links[1].url}}" target="_blank"><img src="./img/book-2x.png" class="shop-list-apple"></a>
           </div>
       </div>
   </div>
@@ -45,29 +44,71 @@ function templateShopListBook(book) {
 }
 
 function temlpateTopBooksCategory({ list_name, books }) {
-  console.log(list_name, books);
   const categoryBooks = books.map(templateBook).join('');
 
   return `<section class="books-category">
               <h3 class="category-title">${list_name}</h3>
               <ul class="books-list">${categoryBooks}</ul>
-              <button type="button" class="button" data-js-category="${list_name}">See more</button>
+              <button type="button" class="button" data-category="${list_name}">See more</button>
           </section>`;
 }
 
 export function templateTopBooks(bookData) {
-  return bookData.map(temlpateTopBooksCategory).join('');
+  const titleHtml =
+    '<h1 class="main-title">Best Sellers <span>Books</span></h1>';
+  return titleHtml + bookData.map(temlpateTopBooksCategory).join('');
 }
 
-export function templateFullCategory(bookData) {
-  return '';
+function templateTitleHtml(categoryTitle) {
+  const titleWords = categoryTitle.trim().split(' ');
+  const lastWord = titleWords.splice(titleWords.length - 1).join('');
+  return `<h1 class="main-title">
+          ${titleWords.join(' ')} <span>${lastWord}</span>
+        </h1>`;
 }
+
+export function templateFullCategory(booksData, categoryTitle) {
+  const titleHtml = templateTitleHtml(categoryTitle);
+  const booksHtml = booksData.map(templateBook).join('');
+  return `${titleHtml}
+          <section class="books-category">
+            <ul class="books-list">${booksHtml}</ul>
+          </section>`;
+}
+
 export function templateListCategories(bookData) {
   return bookData.map(templateNameCategory).join();
 }
 
-export function templatePopUpBook(book) {
-  return ''; // return pop up markup
+export function templatePopUpBook({ author, book_image, buy_links, description, title }, id) {
+  return `<div class="modal">
+      <button type="button" class="modal-btn">
+        <svg class="modal-btn-icon" width="18" height="18">
+          <use href="/img/icons.svg#icon-close"></use>
+        </svg>
+      </button>
+      <div class="modal-wrap">
+        <img src="${book_image}" class="modal-image" />
+        <div class="modal-book-wrap">
+          <h2 class="modal-book-title">${title}</h2>
+          <p class="modal-book-author">${author}</p>
+          <p class="modal-book-descr">
+            ${description}
+          </p>
+          <div class="modal-logos-wrap">
+            <a href="${buy_links[0].url}" target="blank"><img src="/img/amazon.png" alt="logo amazon" class="modal-shop-list-amazon" /></a>
+            <a href="${buy_links[1].url}" target="blank"><img src="/img/book-1x.png" alt="logo apple" class="modal-shop-list-apple" /></a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-btn-add">
+        <button type="button" class="modal-add-btn" data-book-id="${id}">Add to shopping list</button>
+        <p class="modal-btn-text">
+          Сongratulations! You have added the book to the shopping list. To
+          delete, press the button “Remove from the shopping list”.
+        </p>
+      </div>
+    </div>`;
 }
 
 export function templateShopListBooks(bookData) {

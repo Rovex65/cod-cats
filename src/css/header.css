@@ -1,4 +1,9 @@
 .header-container {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  top: 0;
+  background-color: #fff;
   border: 1.5px solid #111;
   border-radius: 0 0 8px 8px;
   display: flex;
@@ -25,6 +30,9 @@
   display: none;
   align-items: center;
 }
+.logo-text {
+  fill: #111;
+}
 
 .header-burger-menu {
   border: none;
@@ -34,7 +42,6 @@
 .header-burger-menu:hover {
   fill: #4f2ee8;
 }
-/* switch */
 
 .switch {
   position: relative;
@@ -87,8 +94,6 @@ input:checked + .slider:before {
   transform: translateX(22px);
 }
 
-/* -------------------------- */
-
 @media screen and (min-width: 768px) {
   .header-container {
     padding: 0 32px;
@@ -116,6 +121,7 @@ input:checked + .slider:before {
     align-items: center;
     justify-content: center;
     gap: 4px;
+    fill: #111;
   }
 
   .nav-link-active {
@@ -125,9 +131,12 @@ input:checked + .slider:before {
     align-items: center;
     border-radius: 36px;
     padding: 8px 16px;
-    width: 72px;
-    height: 34px;
     background-color: #eac645;
+    fill: #111;
+  }
+
+  .shoping-nav-bag {
+    fill: inherit;
   }
 
   .header-burger-menu {

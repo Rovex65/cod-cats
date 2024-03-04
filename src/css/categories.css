@@ -1,11 +1,12 @@
 .sidebar-bookcategories-container {
-  margin: 0 auto;
+  flex-grow: 1;
   position: relative;
   overflow-y: auto;
   box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: #e0e0e0 transparent;
 }
+  
 
 .sidebar-categories-name {
   font-family: 'DM Sans', sans-serif;
@@ -25,6 +26,20 @@
 
 .sb-category-item:not(:last-child) {
   margin-bottom: 24px;
+}
+
+.sidebar-categories-name::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar-categories-name::-webkit-scrollbar-thumb,
+.sidebar-categories-name::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 12px;
+}
+
+.sidebar-categories-name::-webkit-scrollbar-thumb {
+    background-color: #e0e0e0;
 }
 
 .scrolling-line {

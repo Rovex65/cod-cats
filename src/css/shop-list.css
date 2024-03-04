@@ -1,5 +1,7 @@
 .wrp-sheet {
-  padding-top: 40px;
+  padding-top: 110px;
+  padding-bottom: 110px;
+  min-height: 100vh;
 }
 
 .wrp-sheet > .support-ukraine {
@@ -67,10 +69,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .wrp-sheet {
-    padding-top: 32px;
-  }
-
   .shop-content {
     min-width: 700px;
   }
@@ -82,7 +80,6 @@
   .empty-cart {
     margin-bottom: 140px;
   }
-  
 
   .section-container {
     min-width: 700px;

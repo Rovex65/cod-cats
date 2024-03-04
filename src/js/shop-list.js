@@ -1,42 +1,49 @@
 import { templateShopListBooks } from './template-functions';
 import image from '../img/bcg-img-shop-list.png';
-import 'tui-pagination/dist/tui-pagination.css';
-import Pagination from 'tui-pagination';
 
-const listElem = document.querySelector(".shopping-list");
-const paginationContainer = document.querySelector(".pagination-container");
-const itemsPerPage = 3; 
-let currentPage = 1;
+import './header';
+import './switch-theme';
 
-document.addEventListener("DOMContentLoaded", function () {
-  initShoppingList();
-  initPagination();
-  updateShoppingList(currentPage);
-});
+const listElem = document.querySelector('.shopping-list');
+
+const storedValue = localStorage.getItem('saved-books');
+if (!storedValue || JSON.parse(storedValue).length === 0) {
+  renderEmptyPage();
+} else {
+  renderCartItems();
+}
 
 listElem.addEventListener('click', handleDeleteButtonClick);
 
 function handleDeleteButtonClick(event) {
-  if (event.target.classList.contains('delete-icon') || event.target.classList.contains('svg-icon')) {
+  if (
+    event.target.classList.contains('delete-icon') ||
+    event.target.classList.contains('svg-icon') ||
+    event.target.closest('.delete-icon') ||
+    event.target.closest('.svg-icon')
+  ) {
     const card = event.target.closest('.shop-list-book-card');
     if (card) {
-      const cart = JSON.parse(localStorage.getItem("saved-books")) || [];
-      const index = cart.findIndex(item => item.title === card.querySelector('.shop-list-book-title').textContent);
+      card.remove();
+
+      const cart = JSON.parse(localStorage.getItem('saved-books')) || [];
+
+      const index = cart.findIndex(
+        item =>
+          item.title === card.querySelector('.shop-list-book-title').textContent
+      );
 
       if (index !== -1) {
         cart.splice(index, 1);
-        localStorage.setItem("saved-books", JSON.stringify(cart));
-        
-        updatePagination();
+        localStorage.setItem('saved-books', JSON.stringify(cart));
+      }
 
         const startIdx = (currentPage - 1) * itemsPerPage;
         const endIdx = startIdx + itemsPerPage;
 
-        if (index >= startIdx && index < endIdx) {
-          updateShoppingList(currentPage);
-        } else {
-          updateShoppingList(currentPage);
-        }
+      const listElem = document.querySelector('.shopping-list');
+      if (listElem.querySelectorAll('.shop-list-book-card').length === 0) {
+        renderEmptyPage();
       }
     }
   }
@@ -45,18 +52,22 @@ function handleDeleteButtonClick(event) {
 
 
 function updateMargin() {
-  const items = listElem.querySelectorAll(".shop-list-book-card");
-  const titleElem = document.querySelector(".title-shopping"); 
+  const items = listElem.querySelectorAll('.shop-list-book-card');
+  const titleElem = document.querySelector('.title-shopping');
 
-  if (items.length !== 0) {
+  if (items.length === 0) {
+    titleElem.classList.add('empty-cart');
+    titleElem.classList.remove('not-empty-cart');
+  } else {
+    titleElem.classList.remove('empty-cart');
     titleElem.classList.add('not-empty-cart');
   }
 }
 
 function renderCartItems() {
-  const cartItems = JSON.parse(localStorage.getItem("saved-books")) || [];
+  const cartItems = JSON.parse(localStorage.getItem('saved-books')) || [];
   const renderedHTML = templateShopListBooks(cartItems);
-  listElem.innerHTML = renderedHTML;
+  listElem.insertAdjacentHTML('beforeend', renderedHTML);
   updateMargin();
   initPagination();
   updatePagination();
@@ -69,95 +80,5 @@ function renderEmptyPage() {
     </p>
     <img src=${image} alt="" class="img-shopping" />
   `;
-  listElem.innerHTML = emptyMarkup;
-}
-
-function initShoppingList() {
-  const storedValue = localStorage.getItem("saved-books");
-  if (storedValue === null || storedValue === undefined) {
-    renderEmptyPage();
-  } else {
-    renderCartItems();
-  }
-}
-
-function initPagination() {
-  const cartItems = JSON.parse(localStorage.getItem("saved-books")) || [];
-  const totalItems = cartItems.length;
-
-  const paginationOptions = {
-    totalItems: totalItems,
-    itemsPerPage: itemsPerPage,
-    visiblePages: 3,
-  page: 1,
-  centerAlign: false,
-  firstItemClassName: 'tui-first-child',
-  lastItemClassName: 'tui-last-child',
-    template: {
-     page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-        currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-        moveButton:
-          '<a href="#" class="tui-page-btn tui-page-btn-moveButton">' +
-            '<span class="tui-ico-{{type}}">{{type}}</span>' +
-          '</a>',
-        disabledMoveButton:
-          '<span class="tui-page-btn tui-page-btn-disabledMoveButton tui-is-disabled">' +
-            '<span class="tui-ico-{{type}}">{{type}}</span>' +
-          '</span>',
-        moreButton:
-          '<a href="#" class="tui-page-btn tui-page-btn-moreButton tui-{{type}}-is-ellip">' +
-            '<span class="tui-ico-ellip">...</span>' +
-          '</a>'
-    }
-  };
-
-  const pagination = new Pagination(paginationContainer, paginationOptions);
-
-  pagination.on('afterMove', function (event) {
-    currentPage = event.page;
-    updateShoppingList(currentPage);
-  });
-}
-
-function updateShoppingList(page) {
-  const cartItems = JSON.parse(localStorage.getItem("saved-books")) || [];
-  const startIdx = (page - 1) * itemsPerPage;
-  const endIdx = startIdx + itemsPerPage;
-  const pageItems = cartItems.slice(startIdx, endIdx);
-
-  listElem.innerHTML = '';
-
-  const renderedHTML = templateShopListBooks(pageItems);
-  listElem.innerHTML = renderedHTML;
-  updateMargin();
-
-  if (cartItems.length === 0) {
-    renderEmptyPage();
-  }
-}
-
-
-
-function updatePagination() {
-  const cartItems = JSON.parse(localStorage.getItem("saved-books")) || [];
-  const totalItems = cartItems.length;
-
-  const paginationOptions = {
-    totalItems: totalItems,
-    itemsPerPage: itemsPerPage,
-    visiblePages: 3,
-    centerAlign: true,
-    page: currentPage,
-  };
-
-  if (cartItems.length === 0) {
-    paginationContainer.innerHTML = '';
-  } else {
-    const pagination = new Pagination(paginationContainer, paginationOptions);
-
-    pagination.on('afterMove', function (event) {
-      currentPage = event.page;
-      updateShoppingList(currentPage);
-    });
-  }
+  listElem.insertAdjacentHTML('beforeend', emptyMarkup);
 }
