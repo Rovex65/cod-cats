@@ -1,10 +1,13 @@
 import { templateShopListBooks } from './template-functions';
 import image from '../img/bcg-img-shop-list.png';
-
+import './pagination';
 import './header';
 import './switch-theme';
 
 const listElem = document.querySelector('.shopping-list');
+
+
+
 
 const storedValue = localStorage.getItem('saved-books');
 if (!storedValue || JSON.parse(storedValue).length === 0) {
@@ -38,7 +41,8 @@ function handleDeleteButtonClick(event) {
         localStorage.setItem('saved-books', JSON.stringify(cart));
       }
 
-      updateMargin();
+        const startIdx = (currentPage - 1) * itemsPerPage;
+        const endIdx = startIdx + itemsPerPage;
 
       const listElem = document.querySelector('.shopping-list');
       if (listElem.querySelectorAll('.shop-list-book-card').length === 0) {
@@ -47,6 +51,8 @@ function handleDeleteButtonClick(event) {
     }
   }
 }
+
+
 
 function updateMargin() {
   const items = listElem.querySelectorAll('.shop-list-book-card');
@@ -66,12 +72,13 @@ function renderCartItems() {
   const renderedHTML = templateShopListBooks(cartItems);
   listElem.insertAdjacentHTML('beforeend', renderedHTML);
   updateMargin();
+
 }
 
 function renderEmptyPage() {
   const emptyMarkup = `
     <p class="text-shopping">
-    This page is empty, add some books and proceed to order.
+      This page is empty, add some books and proceed to order.
     </p>
     <img src=${image} alt="" class="img-shopping" />
   `;
