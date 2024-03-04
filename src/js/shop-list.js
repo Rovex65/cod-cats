@@ -1,10 +1,13 @@
 import { templateShopListBooks } from './template-functions';
 import image from '../img/bcg-img-shop-list.png';
-
+import './pagination';
 import './header';
 import './switch-theme';
 
 const listElem = document.querySelector('.shopping-list');
+
+
+
 
 const storedValue = localStorage.getItem('saved-books');
 if (!storedValue || JSON.parse(storedValue).length === 0) {
@@ -69,8 +72,7 @@ function renderCartItems() {
   const renderedHTML = templateShopListBooks(cartItems);
   listElem.insertAdjacentHTML('beforeend', renderedHTML);
   updateMargin();
-  initPagination();
-  updatePagination();
+
 }
 
 function renderEmptyPage() {
