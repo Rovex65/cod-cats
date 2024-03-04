@@ -49,6 +49,7 @@ function renderCategoryBooks(booksData) {
 async function getCategoryBooks(target) {
   try {
     categoryTitle = target.dataset.category;
+    setActiveCategory(categoryTitle);
 
     if (categoryTitle === 'all-categories') {
       booksWrap.innerHTML = '';
@@ -59,8 +60,6 @@ async function getCategoryBooks(target) {
       const data = await booksApi.getBooksByCategory(categoryTitle);
       renderCategoryBooks(data);
     }
-
-    setActiveCategory(categoryTitle);
   } catch (err) {
     console.log(err);
   }
@@ -104,7 +103,7 @@ function renderPopUp(bookData, currentId) {
 }
 
 let bookData;
-async function getBookById(target) {
+export async function getBookById(target) {
   try {
     const bookId = target.closest('.book-item').dataset.bookId;
     bookData = await booksApi.getBookById(bookId);
@@ -121,15 +120,8 @@ mainWrap.addEventListener('click', e => {
 
   // show books from the selected category
   if (target.hasAttribute('data-category')) {
+    e.preventDefault();
     getCategoryBooks(target);
-    return;
-  }
-
-  // show book info in popup
-  if (target.closest('.book-item')) {
-    getBookById(target);
-    document.querySelector('.pop-up').classList.add('modal-is-open'); // will be deleted, just for test !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    return;
   }
 });
 
