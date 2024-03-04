@@ -1,5 +1,7 @@
 .wrp-sheet {
   padding-top: 110px;
+  padding-bottom: 110px;
+  min-height: 100vh;
 }
 
 .wrp-sheet > .support-ukraine {

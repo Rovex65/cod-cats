@@ -18,7 +18,9 @@ listElem.addEventListener('click', handleDeleteButtonClick);
 function handleDeleteButtonClick(event) {
   if (
     event.target.classList.contains('delete-icon') ||
-    event.target.classList.contains('svg-icon')
+    event.target.classList.contains('svg-icon') ||
+    event.target.closest('.delete-icon') ||
+    event.target.closest('.svg-icon')
   ) {
     const card = event.target.closest('.shop-list-book-card');
     if (card) {
@@ -38,6 +40,7 @@ function handleDeleteButtonClick(event) {
 
       updateMargin();
 
+      const listElem = document.querySelector('.shopping-list');
       if (listElem.querySelectorAll('.shop-list-book-card').length === 0) {
         renderEmptyPage();
       }
