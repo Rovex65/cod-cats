@@ -84,7 +84,7 @@ export function templatePopUpBook({ author, book_image, buy_links, description, 
   return `<div class="modal">
       <button type="button" class="modal-btn">
         <svg class="modal-btn-icon" width="18" height="18">
-          <use href="../img/icons.svg#icon-close"></use>
+          <use href="/img/icons.svg#icon-close"></use>
         </svg>
       </button>
       <div class="modal-wrap">
@@ -96,8 +96,8 @@ export function templatePopUpBook({ author, book_image, buy_links, description, 
             ${description}
           </p>
           <div class="modal-logos-wrap">
-            <a href="${buy_links[0].url}" target="blank"><img src="../img/amazon.png" alt="logo amazon" class="modal-shop-list-amazon" /></a>
-            <a href="${buy_links[1].url}" target="blank"><img src="../img/book-1x.png" alt="logo apple" class="modal-shop-list-apple" /></a>
+            <a href="${buy_links[0].url}" target="blank"><img src="/img/amazon.png" alt="logo amazon" class="modal-shop-list-amazon" /></a>
+            <a href="${buy_links[1].url}" target="blank"><img src="/img/book-1x.png" alt="logo apple" class="modal-shop-list-apple" /></a>
           </div>
         </div>
       </div>
