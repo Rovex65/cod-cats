@@ -6,10 +6,7 @@ import './switch-theme';
 
 const listElem = document.querySelector('.shopping-list');
 
-
-
-
-const storedValue = localStorage.getItem('saved-books');
+const storedValue = localStorage.getItem('shoppingList');
 if (!storedValue || JSON.parse(storedValue).length === 0) {
   renderEmptyPage();
 } else {
@@ -29,7 +26,7 @@ function handleDeleteButtonClick(event) {
     if (card) {
       card.remove();
 
-      const cart = JSON.parse(localStorage.getItem('saved-books')) || [];
+      const cart = JSON.parse(localStorage.getItem('shoppingList')) || [];
 
       const index = cart.findIndex(
         item =>
@@ -38,11 +35,11 @@ function handleDeleteButtonClick(event) {
 
       if (index !== -1) {
         cart.splice(index, 1);
-        localStorage.setItem('saved-books', JSON.stringify(cart));
+        localStorage.setItem('shoppingList', JSON.stringify(cart));
       }
 
-        const startIdx = (currentPage - 1) * itemsPerPage;
-        const endIdx = startIdx + itemsPerPage;
+      const startIdx = (currentPage - 1) * itemsPerPage;
+      const endIdx = startIdx + itemsPerPage;
 
       const listElem = document.querySelector('.shopping-list');
       if (listElem.querySelectorAll('.shop-list-book-card').length === 0) {
@@ -51,8 +48,6 @@ function handleDeleteButtonClick(event) {
     }
   }
 }
-
-
 
 function updateMargin() {
   const items = listElem.querySelectorAll('.shop-list-book-card');
@@ -68,11 +63,10 @@ function updateMargin() {
 }
 
 function renderCartItems() {
-  const cartItems = JSON.parse(localStorage.getItem('saved-books')) || [];
+  const cartItems = JSON.parse(localStorage.getItem('shoppingList')) || [];
   const renderedHTML = templateShopListBooks(cartItems);
   listElem.insertAdjacentHTML('beforeend', renderedHTML);
   updateMargin();
-
 }
 
 function renderEmptyPage() {
