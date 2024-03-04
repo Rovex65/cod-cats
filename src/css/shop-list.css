@@ -67,10 +67,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .wrp-sheet {
-    padding-top: 32px;
-  }
-
   .shop-content {
     min-width: 700px;
   }
@@ -82,7 +78,6 @@
   .empty-cart {
     margin-bottom: 140px;
   }
-  
 
   .section-container {
     min-width: 700px;

@@ -2,6 +2,7 @@ import { templateShopListBooks } from './template-functions';
 import image from '../img/bcg-img-shop-list.png';
 
 import './header';
+import './switch-theme';
 
 const listElem = document.querySelector('.shopping-list');
 
