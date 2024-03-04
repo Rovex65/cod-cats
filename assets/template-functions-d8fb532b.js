@@ -1,4 +1,4 @@
-(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))r(o);new MutationObserver(o=>{for(const e of o)if(e.type==="childList")for(const a of e.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&r(a)}).observe(document,{childList:!0,subtree:!0});function i(o){const e={};return o.integrity&&(e.integrity=o.integrity),o.referrerPolicy&&(e.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?e.credentials="include":o.crossOrigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function r(o){if(o.ep)return;o.ep=!0;const e=i(o);fetch(o.href,e)}})();const l=window.location.pathname,c=document.querySelectorAll(".header-nav-link");c.forEach(t=>{t.href.includes(`${l}`)&&t.classList.add("nav-link-active")});function p({author:t,book_image:s,title:i,_id:r}){return`<li class="book-item" data-book-id="${r}">
+(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))r(o);new MutationObserver(o=>{for(const e of o)if(e.type==="childList")for(const a of e.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&r(a)}).observe(document,{childList:!0,subtree:!0});function i(o){const e={};return o.integrity&&(e.integrity=o.integrity),o.referrerPolicy&&(e.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?e.credentials="include":o.crossOrigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function r(o){if(o.ep)return;o.ep=!0;const e=i(o);fetch(o.href,e)}})();const p=window.location.pathname,l=document.querySelectorAll(".header-nav-link");let c=!1;l.forEach(t=>{t.getAttribute("href").endsWith(p)&&(t.classList.add("nav-link-active"),c=!0)});c||l[0].classList.add("nav-link-active");function d({author:t,book_image:s,title:i,_id:r}){return`<li class="book-item" data-book-id="${r}">
               <div class="book-cover" data-js-book>
                   <img src="${s}" alt="book cover" />
                   <div class="quick-view">Quick view</div>
@@ -7,7 +7,7 @@
                   <p class="book-title">${i}</p>
                   <p class="book-author">${t}</p>
               </div>
-          </li>`}function d(t){const{book_image:s,title:i,list_name:r,description:o,author:e,buy_links:a}=t;return`<li class="shop-list-book-card">
+          </li>`}function u(t){const{book_image:s,title:i,list_name:r,description:o,author:e,buy_links:a}=t;return`<li class="shop-list-book-card">
   <img src="${s}" class="shop-list-book-image">
   <div class="shop-list-book-info">
       <div class="shop-list-card-header">
@@ -30,9 +30,9 @@
           </div>
       </div>
   </div>
-</li>`}function u({list_name:t,books:s}){console.log(t,s);const i=s.map(p).join("");return`<section class="books-category">
+</li>`}function f({list_name:t,books:s}){console.log(t,s);const i=s.map(d).join("");return`<section class="books-category">
               <h3 class="category-title">${t}</h3>
               <ul class="books-list">${i}</ul>
               <button type="button" class="button" data-js-category="${t}">See more</button>
-          </section>`}function f(t){return t.map(u).join("")}function h(t){return t.map(d).join("")}export{h as a,f as t};
-//# sourceMappingURL=template-functions-e8c4c16f.js.map
+          </section>`}function h(t){return t.map(f).join("")}function m(t){return t.map(u).join("")}export{m as a,h as t};
+//# sourceMappingURL=template-functions-d8fb532b.js.map
