@@ -114,7 +114,7 @@ export async function getBookById(target) {
     const bookId = target.closest('.book-item').dataset.bookId;
     bookData = await booksApi.getBookById(bookId);
     // renderPopUp(bookData, bookId);
-    onModalShow(bookData);
+    onModalShow(bookData, bookId);
   } catch (err) {
     console.log(err);
   }
