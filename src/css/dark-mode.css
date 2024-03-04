@@ -1,0 +1,44 @@
+body.dark {
+  background-color: #202024;
+  color: #fff;
+}
+
+.dark .header-container {
+  border-color: #fff;
+  background-color: #111;
+}
+
+.dark .header-nav-link {
+  color: #fff;
+  fill: #fff;
+}
+
+.dark .nav-link-active {
+  color: #111;
+  fill: #111;
+}
+
+.dark .header-burger-menu {
+  fill: #fff;
+}
+
+.dark .logo-text {
+  fill: #fff;
+}
+
+body.dark .active {
+  color: #eac645;
+}
+
+body.dark .sidebar-categories-name {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dark .button {
+  background-color: #111;
+  color: #fff;
+}
+
+.dark .text-shopping {
+  color: rgba(255, 255, 255, 0.6);
+}
