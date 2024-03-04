@@ -2,6 +2,7 @@ import * as basicLightbox from 'basiclightbox';
 
 const container = document.querySelector(".gallery");
 
+<<<<<<< Updated upstream
   function newGallery() {
     const result = images
     .map(({ preview, original, description }) => {
@@ -55,6 +56,19 @@ export function onModalShow(source) {
     });
 
     modal.show();
+=======
+export function onModalShow(bookData, bookId) {
+  const modal = basicLightbox.create(templatePopUpBook(bookData, bookId), {
+    onShow: modal => {
+      document.addEventListener('keydown', onModalClose);
+      modal.element().querySelector('.modal-btn').onclick = modal.close;
+    },
+    onclose: modal => {
+      document.removeEventListener('keydown', onModalClose);
+    },
+  });
+  modal.show();
+>>>>>>> Stashed changes
 
   function onModalClose(e) {
     if (e.key === "Escape") {
