@@ -66,12 +66,15 @@
   grid-gap: 25px;
 }
 
+.books-category .book-item {
+  cursor: pointer;
+}
+
 .books-category .book-cover {
   position: relative;
   padding-top: 145%;
   border-radius: 8px;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .books-category .book-cover img {

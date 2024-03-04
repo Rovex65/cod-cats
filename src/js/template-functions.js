@@ -1,6 +1,6 @@
 function templateBook({ author, book_image, title, _id }) {
   return `<li class="book-item" data-book-id="${_id}">
-              <div class="book-cover" data-js-book>
+              <div class="book-cover">
                   <img src="${book_image}" alt="book cover" />
                   <div class="quick-view">Quick view</div>
               </div>
@@ -51,23 +51,52 @@ function temlpateTopBooksCategory({ list_name, books }) {
   return `<section class="books-category">
               <h3 class="category-title">${list_name}</h3>
               <ul class="books-list">${categoryBooks}</ul>
-              <button type="button" class="button" data-js-category="${list_name}">See more</button>
+              <button type="button" class="button" data-category="${list_name}">See more</button>
           </section>`;
 }
 
 export function templateTopBooks(bookData) {
-  return bookData.map(temlpateTopBooksCategory).join('');
+  const titleHtml = '<h1 class="main-title">Best Sellers <span>Books</span></h1>';
+  return titleHtml + bookData.map(temlpateTopBooksCategory).join('');
 }
 
-export function templateFullCategory(bookData) {
-  return '';
+function templateTitleHtml(categoryTitle) {
+  const titleWords = categoryTitle.trim().split(' ');
+  const lastWord = titleWords.splice(titleWords.length - 1).join('');
+  return `<h1 class="main-title">
+          ${titleWords.join(' ')} <span>${lastWord}</span>
+        </h1>`;
 }
+
+export function templateFullCategory(booksData, categoryTitle) {
+  const titleHtml = templateTitleHtml(categoryTitle);
+  const booksHtml = booksData.map(templateBook).join('');
+  return `${titleHtml}
+          <section class="books-category">
+            <ul class="books-list">${booksHtml}</ul>
+          </section>`;
+}
+
 export function templateListCategories(bookData) {
   return bookData.map(templateNameCategory).join();
 }
 
 export function templatePopUpBook(book) {
-  return ''; // return pop up markup
+  const { author, book_image, buy_links, description, title } = book;
+  return `<img src="${book_image}" class="modal-image" />
+          <div class="modal-book-wrap">
+            <h2 class="modal-book-title">${title}</h2>
+            <p class="modal-book-author">${author}</p>
+            <p class="modal-book-descr">${description}</p>
+            <div class="modal-logos-wrap">
+              <a href="${buy_links[0].url}" class="modal-logo-item">
+                <img src="/img/amazon.png" alt="" class="modal-shop-list-amazon" />
+              </a>
+              <a href="${buy_links[1].url}" class="modal-logo-item">
+                <img src="/img/book-1x.png" alt="" class="modal-shop-list-apple" />
+              </a>
+            </div>
+          </div>`; // return pop up markup
 }
 
 export function templateShopListBooks(bookData) {
