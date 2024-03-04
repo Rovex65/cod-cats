@@ -66,12 +66,15 @@
   grid-gap: 25px;
 }
 
+.books-category .book-item {
+  cursor: pointer;
+}
+
 .books-category .book-cover {
   position: relative;
   padding-top: 145%;
   border-radius: 8px;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .books-category .book-cover img {
@@ -141,7 +144,7 @@
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1199px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .books-category .books-list {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -153,7 +156,7 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .books-category .books-list {
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 24px;

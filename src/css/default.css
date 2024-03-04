@@ -12,6 +12,11 @@ body {
   margin: 0 auto;
 }
 
+.hidden {
+  display: none;
+  opacity: 0;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
@@ -19,7 +24,14 @@ body {
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+    padding: 0 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
     padding: 0 24px;

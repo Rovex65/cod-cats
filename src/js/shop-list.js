@@ -1,270 +1,76 @@
-"use strict";
+import { templateShopListBooks } from './template-functions';
+import image from '../img/bcg-img-shop-list.png';
 
-const listElem = document.querySelector(".shopping-list");
-const containerElem = document.querySelector(".wrap-shopping");
-const btn = document.querySelector(".check");
-const textElem = document.querySelector(".text-shopping");
-const backgroundImg = document.querySelector(".img-shopping");
+import './header';
+import './switch-theme';
 
-const books = [];
+const listElem = document.querySelector('.shopping-list');
 
-const booksPARSE = [
-  {
-    "_id": "642fd89ac8cf5ee957f122da",
-    "list_name": "Paperback Nonfiction",
-    "date": "2023-04-07T08:46:57.000Z",
-    "age_group": "",
-    "amazon_product_url": "http://www.amazon.com/The-Body-Keeps-Score-Healing/dp/0670785938?tag=NYTBSREV-20",
-    "article_chapter_link": "",
-    "author": "Bessel van der Kolk",
-    "book_image": "https://storage.googleapis.com/du-prd/books/images/9780670785933.jpg",
-    "book_image_width": 128,
-    "book_image_height": 193,
-    "book_review_link": "https://www.nytimes.com/2018/10/18/books/review/how-to-rewire-your-traumatized-brain.html",
-    "book_uri": "nyt://book/e3e33e9d-0e67-5fec-b0d2-2ecddc38ce0e",
-    "contributor": "by Bessel van der Kolk",
-    "contributor_note": "",
-    "created_date": "2023-04-05 22:05:27",
-    "description": "How trauma affects the body and mind, and innovative treatments for recovery.",
-    "first_chapter_link": "",
-    "price": "0.00",
-    "primary_isbn10": "0143127748",
-    "primary_isbn13": "9780143127741",
-    "publisher": "Penguin",
-    "rank": 1,
-    "rank_last_week": 1,
-    "sunday_review_link": "",
-    "title": "THE BODY KEEPS THE SCORE",
-    "updated_date": "2023-04-05 22:10:17",
-    "weeks_on_list": 232,
-    "buy_links": [
-      {
-        "name": "Amazon",
-        "url": "http://www.amazon.com/The-Body-Keeps-Score-Healing/dp/0670785938?tag=NYTBSREV-20"
-      },
-      {
-        "name": "Apple Books",
-        "url": "https://goto.applebooks.apple/9780143127741?at=10lIEQ"
-      },
-      {
-        "name": "Barnes and Noble",
-        "url": "https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780143127741"
-      },
-      {
-        "name": "Books-A-Million",
-        "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fwww.anrdoezrs.net%2Fclick-7990613-35140%3Furl%3Dhttps%253A%252F%252Fwww.booksamillion.com%252Fp%252FTHE%252BBODY%252BKEEPS%252BTHE%252BSCORE%252FBessel%252Bvan%252Bder%252BKolk%252F9780143127741&url2=https%3A%2F%2Fwww.anrdoezrs.net%2Fclick-7990613-35140%3Furl%3Dhttps%253A%252F%252Fwww.booksamillion.com%252Fsearch%253Fquery%253DTHE%252BBODY%252BKEEPS%252BTHE%252BSCORE%252BBessel%252Bvan%252Bder%252BKolk"
-      },
-      {
-        "name": "Bookshop",
-        "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fbookshop.org%2Fa%2F3546%2F9780143127741&url2=https%3A%2F%2Fbookshop.org%2Fbooks%3Faffiliate%3D3546%26keywords%3DTHE%2BBODY%2BKEEPS%2BTHE%2BSCORE"
-      },
-      {
-        "name": "IndieBound",
-        "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fwww.indiebound.org%2Fbook%2F9780143127741%3Faff%3DNYT&url2=https%3A%2F%2Fwww.indiebound.org%2Fsearch%2Fbook%3Fkeys%3DTHE%2BBODY%2BKEEPS%2BTHE%2BSCORE%2BBessel%2Bvan%2Bder%2BKolk%26aff%3DNYT"
-      }
-    ],
-    "__v": 0
-  },
-  {
-    "_id": "642fd89ac8cf5ee957f122db",
-    "list_name": "Paperback Nonfiction",
-    "date": "2023-04-07T08:46:57.000Z",
-    "age_group": "",
-    "amazon_product_url": "https://www.amazon.com/dp/0525657746?tag=NYTBSREV-20",
-    "article_chapter_link": "",
-    "author": "Michelle Zauner",
-    "book_image": "https://storage.googleapis.com/du-prd/books/images/9780525657743.jpg",
-    "book_image_width": 338,
-    "book_image_height": 500,
-    "book_review_link": "",
-    "book_uri": "nyt://book/520cb070-10ce-5d43-9b0c-e77f57d84a8d",
-    "contributor": "by Michelle Zauner",
-    "contributor_note": "",
-    "created_date": "2023-04-05 22:05:27",
-    "description": "The daughter of a Korean mother and Jewish American father, and leader of the indie rock project Japanese Breakfast, describes creating her own identity after losing her mother to cancer.",
-    "first_chapter_link": "",
-    "price": "0.00",
-    "primary_isbn10": "1984898957",
-    "primary_isbn13": "9781984898951",
-    "publisher": "Vintage",
-    "rank": 2,
-    "rank_last_week": 0,
-    "sunday_review_link": "",
-    "title": "CRYING IN H MART",
-    "updated_date": "2023-04-05 22:10:17",
-    "weeks_on_list": 1,
-    "buy_links": [
-      {
-        "name": "Amazon",
-        "url": "https://www.amazon.com/dp/0525657746?tag=NYTBSREV-20"
-      },
-      {
-        "name": "Apple Books",
-        "url": "https://goto.applebooks.apple/9781984898951?at=10lIEQ"
-      },
-      {
-        "name": "Barnes and Noble",
-        "url": "https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781984898951"
-      },
-      {
-        "name": "Books-A-Million",
-        "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fwww.anrdoezrs.net%2Fclick-7990613-35140%3Furl%3Dhttps%253A%252F%252Fwww.booksamillion.com%252Fp%252FCRYING%252BIN%252BH%252BMART%252FMichelle%252BZauner%252F9781984898951&url2=https%3A%2F%2Fwww.anrdoezrs.net%2Fclick-7990613-35140%3Furl%3Dhttps%253A%252F%252Fwww.booksamillion.com%252Fsearch%253Fquery%253DCRYING%252BIN%252BH%252BMART%252BMichelle%252BZauner"
-      },
-      {
-        "name": "Bookshop",
-        "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fbookshop.org%2Fa%2F3546%2F9781984898951&url2=https%3A%2F%2Fbookshop.org%2Fbooks%3Faffiliate%3D3546%26keywords%3DCRYING%2BIN%2BH%2BMART"
-      },
-      {
-        "name": "IndieBound",
-        "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fwww.indiebound.org%2Fbook%2F9781984898951%3Faff%3DNYT&url2=https%3A%2F%2Fwww.indiebound.org%2Fsearch%2Fbook%3Fkeys%3DCRYING%2BIN%2BH%2BMART%2BMichelle%2BZauner%26aff%3DNYT"
-      }
-    ],
-    "__v": 0
-  },
-  {
-    "_id": "642fd89ac8cf5ee957f122de",
-    "list_name": "Paperback Nonfiction",
-    "date": "2023-04-07T08:46:57.000Z",
-    "age_group": "",
-    "amazon_product_url": "http://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman-ebook/dp/B00555X8OA?tag=NYTBSREV-20",
-    "article_chapter_link": "",
-    "author": "Daniel Kahneman",
-    "book_image": "https://storage.googleapis.com/du-prd/books/images/9781429969352.jpg",
-    "book_image_width": 330,
-    "book_image_height": 490,
-    "book_review_link": "https://www.nytimes.com/2011/11/27/books/review/thinking-fast-and-slow-by-daniel-kahneman-book-review.html",
-    "book_uri": "nyt://book/1e1ffccd-d526-5154-84de-1628b31454e9",
-    "contributor": "by Daniel Kahneman",
-    "contributor_note": "",
-    "created_date": "2023-04-05 22:05:27",
-    "description": "When we can and cannot trust our intuitions in making business and personal decisions.",
-    "first_chapter_link": "",
-    "price": "0.00",
-    "primary_isbn10": "0374533555",
-    "primary_isbn13": "9780374533557",
-    "publisher": "Farrar, Straus & Giroux",
-    "rank": 5,
-    "rank_last_week": 4,
-    "sunday_review_link": "https://www.nytimes.com/2011/11/27/books/review/thinking-fast-and-slow-by-daniel-kahneman-book-review.html",
-    "title": "THINKING, FAST AND SLOW",
-    "updated_date": "2023-04-05 22:10:17",
-    "weeks_on_list": 356,
-    "buy_links": [
-      {
-        "name": "Amazon",
-        "url": "http://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman-ebook/dp/B00555X8OA?tag=NYTBSREV-20"
-      },
-      {
-        "name": "Apple Books",
-        "url": "https://goto.applebooks.apple/9780374533557?at=10lIEQ"
-      },
-      {
-        "name": "Barnes and Noble",
-        "url": "https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780374533557"
-      },
-      {
-        "name": "Books-A-Million",
-        "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fwww.anrdoezrs.net%2Fclick-7990613-35140%3Furl%3Dhttps%253A%252F%252Fwww.booksamillion.com%252Fp%252FTHINKING%25252C%252BFAST%252BAND%252BSLOW%252FDaniel%252BKahneman%252F9780374533557&url2=https%3A%2F%2Fwww.anrdoezrs.net%2Fclick-7990613-35140%3Furl%3Dhttps%253A%252F%252Fwww.booksamillion.com%252Fsearch%253Fquery%253DTHINKING%25252C%252BFAST%252BAND%252BSLOW%252BDaniel%252BKahneman"
-      },
-      {
-        "name": "Bookshop",
-        "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fbookshop.org%2Fa%2F3546%2F9780374533557&url2=https%3A%2F%2Fbookshop.org%2Fbooks%3Faffiliate%3D3546%26keywords%3DTHINKING%252C%2BFAST%2BAND%2BSLOW"
-      },
-      {
-        "name": "IndieBound",
-        "url": "https://du-gae-books-dot-nyt-du-prd.appspot.com/redirect?url1=https%3A%2F%2Fwww.indiebound.org%2Fbook%2F9780374533557%3Faff%3DNYT&url2=https%3A%2F%2Fwww.indiebound.org%2Fsearch%2Fbook%3Fkeys%3DTHINKING%252C%2BFAST%2BAND%2BSLOW%2BDaniel%2BKahneman%26aff%3DNYT"
-      }
-    ],
-    "__v": 0
-  },
-]
-
-const booksJSON = booksPARSE.map((book)=>{
-  const zip = JSON.stringify(book);
-  return zip;
-})
-
-const parse = booksJSON.map((book)=>{
-  const unlock = JSON.parse(book);
-  books.push(unlock);
-})
-
-console.log(books);
-
-btn.addEventListener("click", addAllCards);
-
-function addAllCards() {
-  books.forEach(book => {
-    const newCardObj = {
-      photo: book.book_image,
-      width: book.book_image_width,
-      height: book.book_image_height,
-      amazon: book.buy_links.find(link => link.name === 'Amazon').url,
-      apple: book.buy_links.find(link => link.name === 'Apple Books').url,
-      title: book.title,
-      genre: book.list_name,
-      description: book.description,
-      author: book.author,
-    };
-    renderCard(newCardObj);
-  });
-  updateMargin();
+const storedValue = localStorage.getItem('saved-books');
+if (!storedValue || JSON.parse(storedValue).length === 0) {
+  renderEmptyPage();
+} else {
+  renderCartItems();
 }
 
-function cardTemplate(obj) {
-  return `<div class="shop-list-book-card">
-  <img src="${obj.photo}" class="shop-list-book-image">
-  <div class="shop-list-book-info">
-      <div class="shop-list-card-header">
-          <div class="shop-list-book-title-container">
-              <p class="shop-list-book-title">${obj.title}</p>
-              <p class="shop-list-book-genre">${obj.genre}</p>
-          </div>
-          <button type='button' class="delete-icon">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M6.75 2.25H11.25M2.25 4.5H15.75M14.25 4.5L13.724 12.3895C13.6451 13.5732 13.6057 14.165 13.35 14.6138C13.1249 15.0088 12.7854 15.3265 12.3762 15.5248C11.9115 15.75 11.3183 15.75 10.132 15.75H7.86799C6.68168 15.75 6.08852 15.75 5.62375 15.5248C5.21457 15.3265 4.87507 15.0088 4.64999 14.6138C4.39433 14.165 4.35488 13.5732 4.27596 12.3895L3.75 4.5M7.5 7.875V11.625M10.5 7.875V11.625" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-          </button>
-      </div>
-      <p class="shop-list-book-description">${obj.description}</p>
-      <div class="shop-list-product-footer">
-          <p class="shop-list-book-author">${obj.author}</p>
-          <div class="shop-list-book-stores">
-              <a href="${obj.amazon}" target="_blank"><img src="./img/amazon-2x.png" class="shop-list-amazon"></a>
-              <a href="${obj.apple}" target="_blank"><img src="./img/book-2x.png" class="shop-list-apple"></a>
-          </div>
-      </div>
-  </div>
-</div>`;
-}
-
-function renderCard(obj) {
-  const markup = cardTemplate(obj);
-  textElem.style.display = "none";
-  backgroundImg.style.display = "none";
-  listElem.insertAdjacentHTML("beforeend", markup);
-
-  const deleteButtons = listElem.querySelectorAll('.delete-icon');
-
-  deleteButtons.forEach(button => {
-    button.addEventListener('click', handleDeleteButtonClick);
-  });
-}
+listElem.addEventListener('click', handleDeleteButtonClick);
 
 function handleDeleteButtonClick(event) {
-  const card = event.target.closest('.shop-list-book-card');
-  if (card) {
-    card.remove();
+  if (
+    event.target.classList.contains('delete-icon') ||
+    event.target.classList.contains('svg-icon')
+  ) {
+    const card = event.target.closest('.shop-list-book-card');
+    if (card) {
+      card.remove();
+
+      const cart = JSON.parse(localStorage.getItem('saved-books')) || [];
+
+      const index = cart.findIndex(
+        item =>
+          item.title === card.querySelector('.shop-list-book-title').textContent
+      );
+
+      if (index !== -1) {
+        cart.splice(index, 1);
+        localStorage.setItem('saved-books', JSON.stringify(cart));
+      }
+
+      updateMargin();
+
+      if (listElem.querySelectorAll('.shop-list-book-card').length === 0) {
+        renderEmptyPage();
+      }
+    }
   }
 }
 
 function updateMargin() {
-  const items = listElem.querySelectorAll(".shop-list-book-card");
-  const titleElem = document.querySelector(".title-shopping"); 
+  const items = listElem.querySelectorAll('.shop-list-book-card');
+  const titleElem = document.querySelector('.title-shopping');
 
-  if (items.length > 0) {
-    titleElem.style.marginBottom = "40px"; 
+  if (items.length === 0) {
+    titleElem.classList.add('empty-cart');
+    titleElem.classList.remove('not-empty-cart');
   } else {
-    titleElem.style.marginBottom = "140px"; 
+    titleElem.classList.remove('empty-cart');
+    titleElem.classList.add('not-empty-cart');
   }
+}
+
+function renderCartItems() {
+  const cartItems = JSON.parse(localStorage.getItem('saved-books')) || [];
+  const renderedHTML = templateShopListBooks(cartItems);
+  listElem.insertAdjacentHTML('beforeend', renderedHTML);
+  updateMargin();
+}
+
+function renderEmptyPage() {
+  const emptyMarkup = `
+    <p class="text-shopping">
+    This page is empty, add some books and proceed to order.
+    </p>
+    <img src=${image} alt="" class="img-shopping" />
+  `;
+  listElem.insertAdjacentHTML('beforeend', emptyMarkup);
 }

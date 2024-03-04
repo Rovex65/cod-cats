@@ -19,13 +19,18 @@
   </head>
   <body>
     <load ="partials/header.html" />
-
-    <load ="partials/categories.html" />
-    <load ="partials/support-ukraine.html" />
-    <load ="partials/home.html" />
-
     <load ="partials/modal-menu.html" />
 
-    <script type="module" src="./js/main.js"></script>
+    <main class="main-page container">
+      <aside class="aside">
+        <load ="partials/categories.html" />
+        <load ="partials/support-ukraine.html" />
+      </aside>
+      <load ="partials/home.html" />
+    </main>
+
+    <load ="partials/book-modal.html" />
+
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
