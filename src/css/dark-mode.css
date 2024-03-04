@@ -10,6 +10,12 @@ body.dark {
 
 .dark .header-nav-link {
   color: #fff;
+  fill: #fff;
+}
+
+.dark .nav-link-active {
+  color: #111;
+  fill: #111;
 }
 
 .dark .header-burger-menu {
@@ -18,4 +24,21 @@ body.dark {
 
 .dark .logo-text {
   fill: #fff;
+}
+
+body.dark .active {
+  color: #eac645;
+}
+
+body.dark .sidebar-categories-name {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dark .button {
+  background-color: #111;
+  color: #fff;
+}
+
+.dark .text-shopping {
+  color: rgba(255, 255, 255, 0.6);
 }
