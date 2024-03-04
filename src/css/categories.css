@@ -1,12 +1,12 @@
 .sidebar-bookcategories-container {
   flex-grow: 1;
-  margin: 0 auto;
   position: relative;
   overflow-y: auto;
   box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: #e0e0e0 transparent;
 }
+  
 
 .sidebar-categories-name {
   font-family: 'DM Sans', sans-serif;
