@@ -20,12 +20,12 @@ function handleDeleteButtonClick(event) {
   if (event.target.classList.contains('delete-icon') || event.target.classList.contains('svg-icon')) {
     const card = event.target.closest('.shop-list-book-card');
     if (card) {
-      const cart = JSON.parse(localStorage.getItem("saved-books")) || [];
+      const cart = JSON.parse(localStorage.getItem("shoppingList")) || [];
       const index = cart.findIndex(item => item.title === card.querySelector('.shop-list-book-title').textContent);
 
       if (index !== -1) {
         cart.splice(index, 1);
-        localStorage.setItem("saved-books", JSON.stringify(cart));
+        localStorage.setItem("shoppingList", JSON.stringify(cart));
         
         updatePagination();
 
@@ -54,7 +54,7 @@ function updateMargin() {
 }
 
 function renderCartItems() {
-  const cartItems = JSON.parse(localStorage.getItem("saved-books")) || [];
+  const cartItems = JSON.parse(localStorage.getItem("shoppingList")) || [];
   const renderedHTML = templateShopListBooks(cartItems);
   listElem.innerHTML = renderedHTML;
   updateMargin();
@@ -73,7 +73,7 @@ function renderEmptyPage() {
 }
 
 function initShoppingList() {
-  const storedValue = localStorage.getItem("saved-books");
+  const storedValue = localStorage.getItem("shoppingList");
   if (storedValue === null || storedValue === undefined) {
     renderEmptyPage();
   } else {
@@ -82,7 +82,7 @@ function initShoppingList() {
 }
 
 function initPagination() {
-  const cartItems = JSON.parse(localStorage.getItem("saved-books")) || [];
+  const cartItems = JSON.parse(localStorage.getItem("shoppingList")) || [];
   const totalItems = cartItems.length;
 
   const paginationOptions = {
@@ -120,7 +120,7 @@ function initPagination() {
 }
 
 function updateShoppingList(page) {
-  const cartItems = JSON.parse(localStorage.getItem("saved-books")) || [];
+  const cartItems = JSON.parse(localStorage.getItem("shoppingList")) || [];
   const startIdx = (page - 1) * itemsPerPage;
   const endIdx = startIdx + itemsPerPage;
   const pageItems = cartItems.slice(startIdx, endIdx);
@@ -139,7 +139,7 @@ function updateShoppingList(page) {
 
 
 function updatePagination() {
-  const cartItems = JSON.parse(localStorage.getItem("saved-books")) || [];
+  const cartItems = JSON.parse(localStorage.getItem("shoppingList")) || [];
   const totalItems = cartItems.length;
 
   const paginationOptions = {
