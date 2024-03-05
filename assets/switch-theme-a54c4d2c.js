@@ -1,4 +1,4 @@
-(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const s of e)if(s.type==="childList")for(const l of s.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&i(l)}).observe(document,{childList:!0,subtree:!0});function a(e){const s={};return e.integrity&&(s.integrity=e.integrity),e.referrerPolicy&&(s.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?s.credentials="include":e.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function i(e){if(e.ep)return;e.ep=!0;const s=a(e);fetch(e.href,s)}})();const p=window.location.pathname,c=document.querySelectorAll(".header-nav-link");let r=!1;c.forEach(t=>{t.getAttribute("href").endsWith(p)&&(t.classList.add("nav-link-active"),r=!0)});r||c[0].classList.add("nav-link-active");function d({author:t,book_image:o,title:a,_id:i}){return`<li class="book-item" data-book-id="${i}">
+(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))l(e);new MutationObserver(e=>{for(const s of e)if(s.type==="childList")for(const i of s.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&l(i)}).observe(document,{childList:!0,subtree:!0});function a(e){const s={};return e.integrity&&(s.integrity=e.integrity),e.referrerPolicy&&(s.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?s.credentials="include":e.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function l(e){if(e.ep)return;e.ep=!0;const s=a(e);fetch(e.href,s)}})();const p=window.location.pathname,c=document.querySelectorAll(".header-nav-link");let r=!1;c.forEach(t=>{t.getAttribute("href").endsWith(p)&&(t.classList.add("nav-link-active"),r=!0)});r||c[0].classList.add("nav-link-active");function d({author:t,book_image:o,title:a,_id:l}){return`<li class="book-item" data-book-id="${l}">
               <div class="book-cover">
                   <img src="${o}" alt="book cover" />
                   <div class="quick-view">Quick view</div>
@@ -7,7 +7,7 @@
                   <p class="book-title">${a}</p>
                   <p class="book-author">${t}</p>
               </div>
-          </li>`}function u({book_image:t,title:o,list_name:a,description:i,author:e,buy_links:s}){return`<li class="shop-list-book-card">
+          </li>`}function u({image:t,title:o,category:a,description:l,author:e,buyLinks:s}){return`<li class="shop-list-book-card">
   <img src="${t}" class="shop-list-book-image">
   <div class="shop-list-book-info">
       <div class="shop-list-card-header">
@@ -21,7 +21,7 @@
               </svg>
           </button>
       </div>
-      <p class="shop-list-book-description">${i}</p>
+      <p class="shop-list-book-description">${l}</p>
       <div class="shop-list-product-footer">
           <p class="shop-list-book-author">${e}</p>
           <div class="shop-list-book-stores">
@@ -36,10 +36,10 @@
               <button type="button" class="button" data-category="${t}">See more</button>
           </section>`}function b(t){return'<h1 class="main-title">Best Sellers <span>Books</span></h1>'+t.map(m).join("")}function h(t){const o=t.trim().split(" "),a=o.splice(o.length-1).join("");return`<h1 class="main-title">
           ${o.join(" ")} <span>${a}</span>
-        </h1>`}function f(t,o){const a=h(o),i=t.map(d).join("");return`${a}
-          <section class="books-category">
-            <ul class="books-list">${i}</ul>
-          </section>`}function k({author:t,book_image:o,buy_links:a,description:i,title:e},s){return`<div class="modal">
+        </h1>`}function f(t,o){const a=h(o),l=t.map(d).join("");return`${a}
+          <section class="books-category single">
+            <ul class="books-list">${l}</ul>
+          </section>`}function k({author:t,book_image:o,buy_links:a,description:l,title:e},s,i){return`<div class="modal">
       <button type="button" class="modal-btn">
         <svg class="modal-btn-icon" width="18" height="18">
           <use href="/img/icons.svg#icon-close"></use>
@@ -51,7 +51,7 @@
           <h2 class="modal-book-title">${e}</h2>
           <p class="modal-book-author">${t}</p>
           <p class="modal-book-descr">
-            ${i}
+            ${l}
           </p>
           <div class="modal-logos-wrap">
             <a href="${a[0].url}" target="blank"><img src="/img/amazon.png" alt="logo amazon" class="modal-shop-list-amazon" /></a>
@@ -60,11 +60,11 @@
         </div>
       </div>
       <div class="modal-btn-add">
-        <button type="button" class="modal-add-btn" data-book-id="${s}">Add to shopping list</button>
+        <button type="button" class="${i.btnClass}" data-id="${s}">${i.btnText}</button>
         <p class="modal-btn-text">
           Сongratulations! You have added the book to the shopping list. To
           delete, press the button “Remove from the shopping list”.
         </p>
       </div>
     </div>`}function v(t){return t.map(u).join("")}const n=document.getElementById("toggleSwitch");n.addEventListener("change",g);localStorage.getItem("darkMode")==="true"&&(n.checked=!0,document.body.classList.add("dark"));function g(){n.checked?(document.body.classList.add("dark"),localStorage.setItem("darkMode","true")):(document.body.classList.remove("dark"),localStorage.setItem("darkMode","false"))}export{b as a,f as b,v as c,k as t};
-//# sourceMappingURL=switch-theme-bfb7926c.js.map
+//# sourceMappingURL=switch-theme-a54c4d2c.js.map
