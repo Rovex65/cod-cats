@@ -21,9 +21,9 @@
     />
     
     <script type="module" crossorigin src="/cod-cats/commonHelpers.js"></script>
-    <link rel="modulepreload" crossorigin href="/cod-cats/assets/switch-theme-e036f923.js">
+    <link rel="modulepreload" crossorigin href="/cod-cats/assets/switch-theme-465fec91.js">
     <link rel="modulepreload" crossorigin href="/cod-cats/assets/vendor-65593ac5.js">
-    <link rel="stylesheet" href="/cod-cats/assets/switch-theme-99148522.css">
+    <link rel="stylesheet" href="/cod-cats/assets/switch-theme-497b914a.css">
     <link rel="stylesheet" href="/cod-cats/assets/vendor-88da730b.css">
   </head>
   <body>
@@ -57,7 +57,9 @@
         <input type="checkbox" id="toggleSwitch" />
         <span class="slider"></span>
       </label>
-      <button class="header-burger-menu" type="button">
+
+      <button class="header-burger-menu" type="button" id="burgerToggle">
+      
         <svg width="28" height="28">
           <use href="/cod-cats/assets/icons-91f42774.svg#icon-menu"></use>
         </svg>
@@ -66,7 +68,25 @@
   </div>
 </header>
 
-    
+    <div id="burgerMenu" class="burger-menu">
+  <div class="burger-image">
+    <ul class="burger-menu-list">
+      <li class="burger-menu-item">
+        <a id="home" class="burger-menu-home" href="./index.html">Home</a>
+      </li>
+      <li class="burger-menu-item">
+        <a id="shopping-list" class="burger-menu-shopping" href="./shop-list.html">
+          Shopping list
+          <svg class="burger-basket-icon" width="20" height="20">
+            <use
+              href="/cod-cats/assets/icons-91f42774.svg#icon-bag"
+            ></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
 
     <main class="main-page container">
       <aside class="aside">

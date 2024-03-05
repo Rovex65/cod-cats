@@ -67,4 +67,4 @@
         </p>
       </div>
     </div>`}function k(t){return t.map(p).join("")}const n=document.getElementById("toggleSwitch");n.addEventListener("change",v);localStorage.getItem("darkMode")==="true"&&(n.checked=!0,document.body.classList.add("dark"));function v(){n.checked?(document.body.classList.add("dark"),localStorage.setItem("darkMode","true")):(document.body.classList.remove("dark"),localStorage.setItem("darkMode","false"))}export{b as a,Q as b,k as c,f as t};
-//# sourceMappingURL=switch-theme-e036f923.js.map
+//# sourceMappingURL=switch-theme-465fec91.js.map
