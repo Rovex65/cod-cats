@@ -1,5 +1,6 @@
 import amazonLogo from '../img/amazon-2x.png'
 import appleLogo from '../img/book-2x.png'
+import iconClose from '../img/icons.svg#icon-close';
 
 function templateBook({ author, book_image, title, _id }) {
   return `<li class="book-item" data-book-id="${_id}">
@@ -85,7 +86,7 @@ export function templatePopUpBook({ author, book_image, buy_links, description, 
   return `<div class="modal">
       <button type="button" class="modal-btn">
         <svg class="modal-btn-icon" width="18" height="18">
-          <use href="/img/icons.svg#icon-close"></use>
+          <use href="${iconClose}#icon-close"></use>
         </svg>
       </button>
       <div class="modal-wrap">
