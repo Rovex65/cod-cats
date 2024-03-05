@@ -1,16 +1,12 @@
 import { templateTopBooks } from './template-functions';
 import { templateFullCategory } from './template-functions';
-import { templatePopUpBook } from './template-functions';
-// import { getShoppingList } from './local-storage';
-// import { updateShoppingList } from './local-storage';
+import { getShoppingList } from './local-storage-books';
+import { updateShoppingList } from './local-storage-books';
 import { onModalShow } from './pop-up';
 import { BookApi } from './book-api';
 
 const booksApi = new BookApi();
 const booksWrap = document.querySelector('.books-wrapper');
-const mainWrap = document.querySelector('.main-page');
-const popUpBookInfo = document.querySelector('.pop-up .modal-wrap');
-const popUpAddBtn = document.querySelector('.pop-up .modal-add-btn');
 
 function renderBooks(booksData) {
   const markup = templateTopBooks(booksData);
@@ -84,28 +80,14 @@ function getShoppingBtnData(currentId) {
   if (status) {
     return {
       btnText: 'Remove from the shopping list',
-      btnClass: ['modal-add-btn', 'added'],
+      btnClass: 'modal-add-btn added',
     };
   }
 
   return {
     btnText: 'Add to shopping list',
-    btnClass: ['modal-add-btn'],
+    btnClass: 'modal-add-btn',
   };
-}
-
-function updateAddBtn({ _id }, { btnText, btnClass }) {
-  popUpAddBtn.textContent = btnText;
-  popUpAddBtn.setAttribute('data-id', _id);
-  popUpAddBtn.classList.add(...btnClass);
-}
-
-function renderPopUp(bookData, currentId) {
-  const btnData = getShoppingBtnData(currentId);
-  const markup = templatePopUpBook(bookData);
-
-  popUpBookInfo.innerHTML = markup;
-  updateAddBtn(bookData, btnData);
 }
 
 let bookData;
@@ -113,15 +95,16 @@ export async function getBookById(target) {
   try {
     const bookId = target.closest('.book-item').dataset.bookId;
     bookData = await booksApi.getBookById(bookId);
-    // renderPopUp(bookData, bookId);
-    onModalShow(bookData, bookId);
+
+    const btnData = getShoppingBtnData(bookId);
+    onModalShow(bookData, bookId, btnData);
   } catch (err) {
     console.log(err);
   }
 }
 
-// add event listeners
-mainWrap.addEventListener('click', e => {
+// add event listener
+document.addEventListener('click', e => {
   const target = e.target;
 
   // show books from the selected category
@@ -129,18 +112,14 @@ mainWrap.addEventListener('click', e => {
     e.preventDefault();
     getCategoryBooks(target);
   }
-});
-
-// book add to/remove from the shopping list
-popUpAddBtn.addEventListener('click', e => {
-  updateShoppingList(e, bookData);
-});
-
-booksWrap.addEventListener('click', e => {
-  const target = e.target;
 
   // show book info in popup
   if (target.closest('.book-item')) {
     getBookById(target);
+  }
+
+  // book add to/remove from the shopping list
+  if (target.classList.contains('modal-add-btn')) {
+    updateShoppingList(e, bookData);
   }
 });

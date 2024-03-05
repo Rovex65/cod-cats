@@ -2,8 +2,8 @@ import * as basicLightbox from 'basiclightbox';
 
 import { templatePopUpBook } from './template-functions';
 
-export function onModalShow(bookData, bookId) {
-  const modal = basicLightbox.create(templatePopUpBook(bookData, bookId), {
+export function onModalShow(bookData, bookId, btnData) {
+  const modal = basicLightbox.create(templatePopUpBook(bookData, bookId, btnData), {
     onShow: modal => {
       document.addEventListener('keydown', onModalClose);
       modal.element().querySelector('.modal-btn').onclick = modal.close;

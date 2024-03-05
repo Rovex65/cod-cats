@@ -24,23 +24,16 @@ function addToShopList(target, shoppingList, bookData) {
 }
 
 function createBookObject(bookData) {
-  const {
-    _id,
-    list_name,
-    author: bookAuthor,
-    book_image,
-    buy_links,
-    description: bookDescription,
-    title: bookTitle,
-  } = bookData;
+  const { _id, list_name, author, book_image, buy_links, description, title } =
+    bookData;
 
   return {
     bookId: _id,
     image: book_image,
-    title: bookTitle,
+    title,
     category: list_name,
-    description: bookDescription,
-    author: bookAuthor,
+    description,
+    author,
     buyLinks: buy_links,
   };
 }

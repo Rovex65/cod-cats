@@ -51,6 +51,7 @@
   flex-wrap: wrap;
   align-content: flex-start;
   border: 0;
+  border-radius: 8px;
   margin-right: 24px;
 }
 
@@ -145,6 +146,11 @@
   margin: 0 auto;
   text-align: center;
   color: rgba(255, 255, 255, 0.5);
+  display: none;
+}
+
+.modal-add-btn.added + .modal-btn-text {
+  display: block;
 }
 
 .modal-is-open {
