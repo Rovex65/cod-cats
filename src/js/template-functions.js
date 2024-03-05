@@ -1,3 +1,5 @@
+import amazon from '../img/amazon.png'
+
 function templateBook({ author, book_image, title, _id }) {
   return `<li class="book-item" data-book-id="${_id}">
               <div class="book-cover">
@@ -34,8 +36,8 @@ function templateShopListBook({ image, title, category, description, author, buy
       <div class="shop-list-product-footer">
           <p class="shop-list-book-author">${author}</p>
           <div class="shop-list-book-stores">
-              <a href="${buyLinks[0].url}" target="_blank"><img src="./img/amazon-2x.png" class="shop-list-amazon"></a>
-              <a href="${buyLinks[1].url}}" target="_blank"><img src="./img/book-2x.png" class="shop-list-apple"></a>
+              <a href="${buyLinks[0].url}" target="_blank"><img src="${amazon}" class="shop-list-amazon"></a>
+              <a href="${buyLinks[1].url}}" target="_blank"><img src="/img/book-2x.png" class="shop-list-apple"></a>
           </div>
       </div>
   </div>
@@ -94,7 +96,7 @@ export function templatePopUpBook({ author, book_image, buy_links, description, 
             ${description}
           </p>
           <div class="modal-logos-wrap">
-            <a href="${buy_links[0].url}" target="blank"><img src="/img/amazon.png" alt="logo amazon" class="modal-shop-list-amazon" /></a>
+            <a href="${buy_links[0].url}" target="blank"><img src="${amazon}" alt="logo amazon" class="modal-shop-list-amazon" /></a>
             <a href="${buy_links[1].url}" target="blank"><img src="/img/book-1x.png" alt="logo apple" class="modal-shop-list-apple" /></a>
           </div>
         </div>
