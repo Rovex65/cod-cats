@@ -42,7 +42,7 @@
           </section>`}function f({author:t,book_image:o,buy_links:i,description:l,title:e},s,a){return`<div class="modal">
       <button type="button" class="modal-btn">
         <svg class="modal-btn-icon" width="18" height="18">
-          <use href="${A}#icon-close"></use>
+          <use href="${A}"></use>
         </svg>
       </button>
       <div class="modal-wrap">
@@ -67,4 +67,4 @@
         </p>
       </div>
     </div>`}function k(t){return t.map(p).join("")}const n=document.getElementById("toggleSwitch");n.addEventListener("change",v);localStorage.getItem("darkMode")==="true"&&(n.checked=!0,document.body.classList.add("dark"));function v(){n.checked?(document.body.classList.add("dark"),localStorage.setItem("darkMode","true")):(document.body.classList.remove("dark"),localStorage.setItem("darkMode","false"))}export{b as a,Q as b,k as c,f as t};
-//# sourceMappingURL=switch-theme-ac9f4ee3.js.map
+//# sourceMappingURL=switch-theme-e036f923.js.map
