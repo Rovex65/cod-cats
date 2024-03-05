@@ -86,7 +86,7 @@ export function templatePopUpBook({ author, book_image, buy_links, description, 
   return `<div class="modal">
       <button type="button" class="modal-btn">
         <svg class="modal-btn-icon" width="18" height="18">
-          <use href="${iconClose}#icon-close"></use>
+          <use href="${iconClose}"></use>
         </svg>
       </button>
       <div class="modal-wrap">
