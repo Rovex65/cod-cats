@@ -33,12 +33,59 @@ body.dark .active {
 body.dark .sidebar-categories-name {
   color: rgba(255, 255, 255, 0.6);
 }
+.dark .sidebar-bookcategories-container {
+  scrollbar-color: #111 transparent;
+}
 
 .dark .button {
-  background-color: #111;
   color: #fff;
 }
 
 .dark .text-shopping {
   color: rgba(255, 255, 255, 0.6);
+}
+
+.dark .shop-list-amazon {
+  filter: brightness(0) invert(1);
+}
+
+.dark .shop-list-amazon:hover {
+  filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.35));
+}
+
+.dark .shop-list-apple:hover {
+  filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.35));
+}
+
+.dark .modal {
+  background-color: #202024;
+  border-color: #fff;
+}
+
+.dark .modal-btn {
+  fill: #fff;
+}
+
+.dark .modal-book-title {
+  color: #fff;
+}
+
+.dark .modal-book-descr {
+  color: #fff;
+}
+
+.dark .modal-shop-list-amazon {
+  filter: brightness(0) invert(1);
+}
+
+.dark .modal-shop-list-amazon:hover {
+  filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.35));
+}
+
+.dark .modal-shop-list-apple:hover {
+  filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.35));
+}
+
+.dark .modal-add-btn {
+  color: #fff;
 }
