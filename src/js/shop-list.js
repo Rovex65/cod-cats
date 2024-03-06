@@ -38,10 +38,11 @@ function handleDeleteButtonClick(event) {
         localStorage.setItem('shoppingList', JSON.stringify(cart));
       }
 
+      updateMargin();
+
       const startIdx = (currentPage - 1) * itemsPerPage;
       const endIdx = startIdx + itemsPerPage;
 
-      const listElem = document.querySelector('.shopping-list');
       if (listElem.querySelectorAll('.shop-list-book-card').length === 0) {
         renderEmptyPage();
       }
