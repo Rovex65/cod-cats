@@ -1,5 +1,7 @@
 .main-page {
   padding-top: 110px;
+  padding-bottom: 70px;
+  min-height: 100vh;
 }
 
 .aside {
