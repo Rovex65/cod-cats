@@ -20,23 +20,23 @@ listElem.addEventListener('click', handleDeleteButtonClick);
 
 function handleDeleteButtonClick(event) {
   if (
-    event.target.classList.contains('delete-icon') ||
-    event.target.classList.contains('svg-icon') ||
-    event.target.closest('.delete-icon') ||
-    event.target.closest('.svg-icon')
+    event.target.classList.contains("delete-icon") ||
+    event.target.classList.contains("svg-icon") ||
+    event.target.closest(".delete-icon") ||
+    event.target.closest(".svg-icon")
   ) {
-    const card = event.target.closest('.shop-list-book-card');
+    const card = event.target.closest(".shop-list-book-card");
     if (card) {
-      const cart = JSON.parse(localStorage.getItem('shoppingList')) || [];
+      const cart = JSON.parse(localStorage.getItem("shoppingList")) || [];
       const index = cart.findIndex(
         (item) =>
           item.title ===
-          card.querySelector('.shop-list-book-title').textContent
+          card.querySelector(".shop-list-book-title").textContent
       );
 
       if (index !== -1) {
         cart.splice(index, 1);
-        localStorage.setItem('shoppingList', JSON.stringify(cart));
+        localStorage.setItem("shoppingList", JSON.stringify(cart));
 
         const startIdx = (currentPage - 1) * itemsPerPage;
         const endIdx = startIdx + itemsPerPage;
@@ -46,11 +46,11 @@ function handleDeleteButtonClick(event) {
         } else {
           updateShoppingList(currentPage);
         }
-        updatePagination();
+        updatePagination(); 
       }
 
-      const listElem = document.querySelector('.shopping-list');
-      if (listElem.querySelectorAll('.shop-list-book-card').length === 0) {
+      const listElem = document.querySelector(".shopping-list");
+      if (listElem.querySelectorAll(".shop-list-book-card").length === 0) {
         renderEmptyPage();
         hidePagination();
       }
@@ -79,10 +79,18 @@ function updateMargin() {
 }
 
 function renderCartItems() {
-  const cartItems = JSON.parse(localStorage.getItem('shoppingList')) || [];
+  const cartItems = JSON.parse(localStorage.getItem("shoppingList")) || [];
+  const totalItems = cartItems.length;
+
   const renderedHTML = templateShopListBooks(cartItems);
-  listElem.insertAdjacentHTML('beforeend', renderedHTML);
+  listElem.innerHTML = renderedHTML;
   updateMargin();
+
+  if (totalItems > itemsPerPage) {
+    updatePagination(); 
+  } else {
+    hidePagination();
+  }
 }
 
 function renderEmptyPage() {
@@ -163,30 +171,55 @@ function updateShoppingList(page) {
 }
 
 function updatePagination() {
-  const cartItems = JSON.parse(localStorage.getItem('shoppingList')) || [];
+  const cartItems = JSON.parse(localStorage.getItem("shoppingList")) || [];
   const totalItems = cartItems.length;
 
-  const paginationOptions = {
-    totalItems: totalItems,
-    itemsPerPage: itemsPerPage,
-    visiblePages: 3,
-    centerAlign: true,
-    page: currentPage,
-  };
+  const paginationContainer = document.querySelector(".pagination-container");
 
-  const existingPagination = paginationContainer.querySelector('.tui-pagination');
-  if (existingPagination) {
-    existingPagination.remove();
-  }
+  if (totalItems > itemsPerPage) {
+    const paginationOptions = {
+      totalItems: totalItems,
+      itemsPerPage: itemsPerPage,
+      visiblePages: 3,
+      centerAlign: true,
+      page: currentPage,
+      template: {
+        page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+        currentPage:
+          '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+        moveButton:
+          '<a href="#" class="tui-page-btn tui-page-btn-moveButton">' +
+          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          "</a>",
+        disabledMoveButton:
+          '<span class="tui-page-btn tui-page-btn-disabledMoveButton tui-is-disabled">' +
+          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          "</span>",
+        moreButton:
+          '<a href="#" class="tui-page-btn tui-page-btn-moreButton tui-{{type}}-is-ellip">' +
+          '<span class="tui-ico-ellip">...</span>' +
+          "</a>",
+      },
+    };
 
-  if (cartItems.length === 0) {
-    paginationContainer.innerHTML = '';
-    renderEmptyPage(paginationContainer);
+   
+    const existingPagination = paginationContainer.querySelector(".tui-pagination");
+    if (existingPagination) {
+      existingPagination.remove();
+    }
+
+    const pagination = new Pagination(paginationContainer, paginationOptions);
+
+    pagination.on("afterMove", function (event) {
+      currentPage = event.page;
+      updateShoppingList(currentPage);
+    });
   } else {
-    initPagination();
+    hidePagination(); 
   }
 }
 
 function restorePaginationButtonsClasses() {
-  // Додайте код для відновлення класів кнопок пагінації, якщо це потрібно
+  
 }
+
