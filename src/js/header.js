@@ -5,6 +5,7 @@ let foundActiveLink = false;
 
 navLinks.forEach(link => {
   const href = link.getAttribute('href');
+  console.log(href, activePage, navLinks);
   if (href.endsWith(activePage)) {
     link.classList.add('nav-link-active');
     foundActiveLink = true;
