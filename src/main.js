@@ -5,5 +5,5 @@ import './js/save-book-local.js';
 import './js/switch-theme.js';
 import './js/categories.js';
 import './js/pop-up.js';
-import './js/izihelp.js';
+
 
