@@ -12,14 +12,14 @@ export function initBurgerMenu() {
           <use href="../img/icons.svg#icon-close"></use>
         </svg>`;
       header.classList.add('overflow-hidden');
-      document.body.classList.add('burger-menu-show');
+      document.body.classList.add('burger-menu-show'); 
     } else {
       burgerToggle.innerHTML = `
         <svg width="28" height="28">
           <use href="../img/icons.svg#icon-menu"></use>
         </svg>`;
       header.classList.remove('overflow-hidden');
-      document.body.classList.remove('burger-menu-show');
+      document.body.classList.remove('burger-menu-show'); 
     }
   });
 }
@@ -28,19 +28,17 @@ document.addEventListener('DOMContentLoaded', function () {
   initBurgerMenu();
 });
 
-const activePage = window.location.pathname;
-const navLinks = document.querySelectorAll('.burger-menu-nav-link');
+const home = document.getElementById('home');
+const shoppingList = document.getElementById('shopping-list');
 
-let foundActiveLink = false;
+home.classList.add('active');
 
-navLinks.forEach(link => {
-  const href = link.getAttribute('href');
-  if (activePage.endsWith(href.slice(2))) {
-    link.classList.add('burger-menu-nav-link-active');
-    foundActiveLink = true;
+const handleClick = event => {
+  if (event.target === home) {
+    home.classList.add('active');
+    shoppingList.classList.remove('active');
+  } else if (event.target === shoppingList) {
+    home.classList.remove('active');
+    shoppingList.classList.add('active');
   }
-});
-
-if (!foundActiveLink) {
-  navLinks[0].classList.add('burger-menu-nav-link-active');
-}
+};

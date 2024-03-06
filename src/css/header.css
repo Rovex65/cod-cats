@@ -66,8 +66,8 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
+  transition: 0.4s;
   border-radius: 34px;
-  transition: background-color 250ms ease-in-out, box-shadow 250ms ease-in-out;
 }
 
 .slider:before {
@@ -77,8 +77,8 @@
   width: 18px;
   bottom: 1px;
   background-color: white;
+  transition: 0.4s;
   border-radius: 50%;
-  transition: transform 250ms ease-in-out;
 }
 
 .switch input:not(:checked) + .slider {
