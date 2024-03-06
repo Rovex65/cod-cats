@@ -67,21 +67,7 @@
   color: #ffffff;
   margin-right: 16px;
 }
-.slider-support-ukraine {
-  position: absolute;
-  width: 237px;
-  height: 190px;
-  overflow: hidden;
-  margin-top: 40px;
-}
 
-.slider-liner-su {
-  position: relative;
-
-  width: 237px;
-  height: 428px;
-  transition: var(--transition-rule);
-}
 @media screen and (min-width: 768px) {
   .support-ukraine {
     height: 472px;
