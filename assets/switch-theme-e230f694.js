@@ -73,4 +73,4 @@
         </p>
       </div>
     </div>`}function E(t){return t.map(b).join("")}const l=document.getElementById("toggleSwitch");l.addEventListener("change",L);localStorage.getItem("darkMode")==="true"&&(l.checked=!0,document.body.classList.add("dark"));function L(){l.checked?(document.body.classList.add("dark"),localStorage.setItem("darkMode","true")):(document.body.classList.remove("dark"),localStorage.setItem("darkMode","false"))}export{B as a,j as b,E as c,x as t};
-//# sourceMappingURL=switch-theme-e04eb215.js.map
+//# sourceMappingURL=switch-theme-e230f694.js.map
