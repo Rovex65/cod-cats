@@ -3,6 +3,7 @@ import image from '../img/bcg-img-shop-list.png';
 import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
 import './header';
+import './support-ukraine';
 import './switch-theme';
 
 const listElem = document.querySelector('.shopping-list');
