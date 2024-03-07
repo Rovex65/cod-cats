@@ -17,6 +17,7 @@
 @import url('./dark-mode.css');
 @import url('./pagination.css');
 @import url('./loader.css');
+@import url('./scroll-up.css');
 
 :root {
   font-family: 'DM Sans', sans-serif;
