@@ -5,4 +5,4 @@ import './js/support-ukraine.js';
 import './js/switch-theme.js';
 import './js/categories.js';
 import './js/pop-up.js';
-import './js/modal-menu.js';
+import './js/scroll-up.js';

@@ -1,3 +1,5 @@
+import './modal-menu'
+
 const activePage = window.location.pathname;
 const navLinks = document.querySelectorAll('.header-nav-link');
 

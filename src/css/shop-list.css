@@ -116,6 +116,7 @@
 
   .wrp-sheet > .support-ukraine {
     display: block;
+    flex-shrink: 0;
   }
 
   .sup-sect {

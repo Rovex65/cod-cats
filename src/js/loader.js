@@ -1,5 +1,5 @@
 // Добавить в html <span class="loader"></span>
-const loader = document.querySelector('.loader');
+const loader = document.querySelector('.home-loader');
 
 export function showLoader() {
   loader.classList.remove('hidden');
