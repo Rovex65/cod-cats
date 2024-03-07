@@ -1,5 +1,5 @@
-import amazonLogo from '../img/amazon-2x.png'
-import appleLogo from '../img/book-2x.png'
+import amazonLogo from '../img/amazon-2x.png';
+import appleLogo from '../img/book-2x.png';
 import iconClose from '../img/icons.svg#icon-close';
 
 function templateBook({ author, book_image, title, _id }) {
@@ -15,11 +15,20 @@ function templateBook({ author, book_image, title, _id }) {
           </li>`;
 }
 
-function templateNameCategory() {
-  return ''; // return <li> with name of category
+function templateNameCategory({ list_name: category }) {
+  return `<li class="sb-category-item">
+            <a href="#" data-category="${category}">${category}</a>
+          </li>`;
 }
 
-function templateShopListBook({ image, title, category, description, author, buyLinks }) {
+function templateShopListBook({
+  image,
+  title,
+  category,
+  description,
+  author,
+  buyLinks,
+}) {
   return `<li class="shop-list-book-card">
   <img src="${image}" class="shop-list-book-image">
   <div class="shop-list-book-info">
@@ -57,7 +66,8 @@ function temlpateTopBooksCategory({ list_name, books }) {
 }
 
 export function templateTopBooks(bookData) {
-  const titleHtml = '<h1 class="main-title">Best Sellers <span>Books</span></h1>';
+  const titleHtml =
+    '<h1 class="main-title">Best Sellers <span>Books</span></h1>';
   return titleHtml + bookData.map(temlpateTopBooksCategory).join('');
 }
 
@@ -79,10 +89,14 @@ export function templateFullCategory(booksData, categoryTitle) {
 }
 
 export function templateListCategories(bookData) {
-  return bookData.map(templateNameCategory).join();
+  return bookData.map(templateNameCategory).join('');
 }
 
-export function templatePopUpBook({ author, book_image, buy_links, description, title }, id, btnData) {
+export function templatePopUpBook(
+  { author, book_image, buy_links, description, title },
+  id,
+  btnData
+) {
   return `<div class="modal">
       <button type="button" class="modal-btn">
         <svg class="modal-btn-icon" width="18" height="18">

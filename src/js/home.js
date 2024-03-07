@@ -5,6 +5,7 @@ import { updateShoppingList } from './local-storage-books';
 import { onModalShow } from './pop-up';
 import { BookApi } from './book-api';
 import { showLoader, closeLoader } from './loader';
+import { showError } from './notification';
 
 const booksApi = new BookApi();
 const booksWrap = document.querySelector('.books-wrapper');
@@ -22,7 +23,7 @@ async function getTopBooksFromApi() {
     const data = await booksApi.getTopBooks();
     renderTopBooks(data);
   } catch (err) {
-    console.log(err);
+    showError(err.message);
   }
   closeLoader();
 }
@@ -67,7 +68,7 @@ async function getCategoryBooks(target) {
       renderCategoryBooks(data);
     }
   } catch (err) {
-    console.log(err);
+    showError(err.message);
   }
   closeLoader();
 }
@@ -104,7 +105,7 @@ export async function getBookById(target) {
     const btnData = getShoppingBtnData(bookId);
     onModalShow(bookData, bookId, btnData);
   } catch (err) {
-    console.log(err);
+    showError(err.message);
   }
 }
 
