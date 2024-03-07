@@ -13,10 +13,6 @@
   overflow: hidden;
 }
 
-.hidden {
-  display: none;
-}
-
 .pagination-container {
   height: 28px;
   margin: 14px 0 12px;

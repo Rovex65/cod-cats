@@ -16,6 +16,7 @@
 @import url('./modal-menu.css');
 @import url('./dark-mode.css');
 @import url('./pagination.css');
+@import url('./loader.css');
 
 :root {
   font-family: 'DM Sans', sans-serif;

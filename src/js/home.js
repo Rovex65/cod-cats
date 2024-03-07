@@ -4,23 +4,27 @@ import { getShoppingList } from './local-storage-books';
 import { updateShoppingList } from './local-storage-books';
 import { onModalShow } from './pop-up';
 import { BookApi } from './book-api';
+import { showLoader, closeLoader } from './loader';
 
 const booksApi = new BookApi();
 const booksWrap = document.querySelector('.books-wrapper');
 
-function renderBooks(booksData) {
+function renderTopBooks(booksData) {
   const markup = templateTopBooks(booksData);
-  booksWrap.insertAdjacentHTML('beforeend', markup);
+  booksWrap.innerHTML = markup;
 }
 
 // get top books
 async function getTopBooksFromApi() {
+  clearBooksWrap();
+  showLoader();
   try {
     const data = await booksApi.getTopBooks();
-    renderBooks(data);
+    renderTopBooks(data);
   } catch (err) {
     console.log(err);
   }
+  closeLoader();
 }
 
 getTopBooksFromApi();
@@ -49,15 +53,15 @@ function renderCategoryBooks(booksData) {
 }
 
 async function getCategoryBooks(target) {
+  clearBooksWrap();
+  showLoader();
   try {
     categoryTitle = target.dataset.category;
     setActiveCategory(categoryTitle);
 
     if (categoryTitle === 'all-categories') {
-      booksWrap.innerHTML = '';
-
       const data = await booksApi.getTopBooks();
-      renderBooks(data);
+      renderTopBooks(data);
     } else {
       const data = await booksApi.getBooksByCategory(categoryTitle);
       renderCategoryBooks(data);
@@ -65,6 +69,7 @@ async function getCategoryBooks(target) {
   } catch (err) {
     console.log(err);
   }
+  closeLoader();
 }
 
 // get book by id
@@ -123,3 +128,7 @@ document.addEventListener('click', e => {
     updateShoppingList(e, bookData);
   }
 });
+
+function clearBooksWrap() {
+  booksWrap.innerHTML = '';
+}

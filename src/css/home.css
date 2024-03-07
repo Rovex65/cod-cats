@@ -10,12 +10,20 @@
   flex-direction: column;
 }
 
+.home-wrapper {
+  width: 100%;
+  padding-top: 40px;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .aside {
     display: flex;
     flex-direction: row;
     gap: 32px;
   }
+}
+.home-wrapper {
+  padding-top: 100px;
 }
 
 @media screen and (min-width: 1280px) {
@@ -26,5 +34,8 @@
   .main-page {
     display: flex;
     gap: 40px;
+  }
+  .home-wrapper {
+    padding-top: 0;
   }
 }

@@ -33,9 +33,6 @@
 }
 
 /* books-wrapper */
-.books-wrapper {
-  margin-top: 40px;
-}
 
 .books-wrapper h1 {
   font-weight: 700;
@@ -142,9 +139,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .books-wrapper {
-    margin-top: 100px;
-  }
   .books-wrapper h1 {
     font-size: 48px;
     line-height: 1.08;
@@ -164,9 +158,6 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .books-wrapper {
-    margin-top: 0;
-  }
   .books-category .books-list {
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 40px 24px;
