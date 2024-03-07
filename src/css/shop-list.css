@@ -43,7 +43,6 @@
 }
 
 .shop-content {
-  min-width: 333px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,10 +57,12 @@
   line-height: 133%;
   letter-spacing: -0.02em;
   color: rgba(0, 0, 0, 0.6);
+  align-self: center;
 }
 .img-shopping {
   width: 265px;
   height: 198px;
+  align-self: center;
 }
 
 .support {
@@ -69,10 +70,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .shop-content {
-    min-width: 700px;
-  }
-
   .title-shopping {
     font-size: 48px;
   }
@@ -106,10 +103,6 @@
     flex-grow: 1;
   }
 
-  .shop-content {
-    min-width: 900px;
-  }
-
   .wrp-sheet {
     display: flex;
   }
@@ -135,10 +128,7 @@
   border: 2px solid rgba(79, 46, 232, 0.4);
   border-radius: 16px;
   padding: 12px;
-  width: 335px;
-  height: 170px;
   display: flex;
-  flex-direction: row;
 }
 
 .shop-list-book-image {
@@ -147,6 +137,7 @@
   height: 142px;
   display: flex;
   align-self: center;
+  flex-shrink: 0;
 }
 
 .shop-list-book-info {
@@ -154,26 +145,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex-grow: 1;
 }
 
 .shop-list-card-header {
   display: flex;
   margin-bottom: 8px;
-  width: 193px;
-  height: 36px;
   justify-content: space-between;
-}
-
-.shop-list-book-title-container {
-  display: flex;
-  flex-direction: column;
-  white-space: nowrap;
-  width: 144px;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .shop-list-book-title {
@@ -182,6 +160,12 @@
   line-height: 1.125;
   letter-spacing: -0.04em;
   margin-bottom: 4px;
+  padding-right: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .shop-list-book-genre {
@@ -189,6 +173,11 @@
   line-height: 1.16667;
   letter-spacing: 0.03em;
   color: #b4afaf;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .delete-icon {
@@ -214,12 +203,10 @@ svg {
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 193px;
 }
 
 .shop-list-product-footer {
   display: flex;
-  height: 16px;
   justify-content: space-between;
   margin-top: 16px;
 }
@@ -237,8 +224,6 @@ svg {
 .shop-list-book-stores {
   display: flex;
   justify-content: flex-end;
-  width: 56px;
-  height: 16px;
   gap: 8px;
   align-items: center;
 }
@@ -271,13 +256,12 @@ svg {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
   .shop-list-book-card {
     padding: 22px;
-    width: 704px;
-    height: 213px;
   }
 
   .shop-list-book-image {
@@ -291,8 +275,6 @@ svg {
 
   .shop-list-card-header {
     margin-bottom: 14px;
-    width: 516px;
-    height: 36px;
   }
 
   .shop-list-book-title-container {
@@ -308,18 +290,11 @@ svg {
     height: 34px;
   }
 
-  .shop-list-book-description {
-    width: 508px;
-  }
-
   .shop-list-product-footer {
-    height: 27px;
     margin-top: 35px;
   }
 
   .shop-list-book-stores {
-    width: 92px;
-    height: 27px;
     gap: 16px;
   }
 
@@ -335,19 +310,8 @@ svg {
 }
 
 @media screen and (min-width: 1280px) {
-  .shop-list-book-card {
-    width: 996px;
-    height: 213px;
-  }
-
-  .shop-list-book-image {
-    width: 116px;
-    height: 165px;
-  }
-
   .shop-list-card-header {
     margin-bottom: 16px;
-    width: 808px;
   }
 
   .delete-icon {
@@ -359,19 +323,5 @@ svg {
     align-items: center;
     justify-content: center;
     border: none;
-  }
-
-  .shop-list-book-description {
-    width: 808px;
-  }
-
-  .shop-list-product-footer {
-    height: 27px;
-  }
-
-  .shop-list-book-stores {
-    width: 92px;
-    height: 27px;
-    gap: 16px;
   }
 }
