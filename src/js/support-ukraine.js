@@ -1,34 +1,23 @@
-
 import { fonds } from './array-of-funds';
 let offset = 0;
 const supportList = document.querySelector('.support-ukraine-list');
 const sliderLine = document.querySelector('.slider-liner-su');
 const sliderBtn = document.querySelector('.support-ukraine-btn');
-sliderBtn.addEventListener('click', sliderBtnHandler);
+// sliderBtn.addEventListener('click', sliderBtnHandler);
 
-createMarkupForSupportUk(fonds);
+renderFonds(fonds);
 
-function createMarkupForSupportUk(fonds) {
-  fonds.forEach(function (fond, index) {
-    const { title, url, img, img2x } = fond;
-    const params = {};
-    params.title = title;
-    params.url = url;
-    params.img = img;
-    params.img2x = img2x;
-    params.index = index;
-
-    supportList.insertAdjacentHTML('beforeend', markup(params));
-  });
+function renderFonds(fonds) {
+  supportList.innerHTML = fonds
+    .map((fond, index) => templateFond(fond, index + 1))
+    .join('');
 }
 
-function markup(params) {
-  const { title, url, img, img2x, index } = params;
-
-  return `<li class="list-unit">
-	<a href="${url}" class="list-unit-link" target="_blank"><span class="span-list-unit">${pad(
-    index + 1
-  )}</span>
+function templateFond({ title, url, img, img2x }, index) {
+  return `<li class="list-unit slider-item">
+	<a href="${url}" class="list-unit-link" target="_blank"><span class="span-list-unit">${String(
+    index
+  ).padStart(2, '0')}</span>
 	<img class="img-list-unit"
 		src="${img}"
 		srcset="${img} 1x, ${img2x} 2x"
@@ -37,14 +26,19 @@ function markup(params) {
 </li>`;
 }
 
-function pad(value) {
-  return String(value).padStart(2, '0');
-}
+// function sliderBtnHandler() {
+//   offset += 157;
+//   if (offset > 500) {
+//     offset = 0;
+//   }
+//   sliderLine.style.top = -offset + 'px';
+// }
 
-function sliderBtnHandler() {
-  offset += 157;
-  if (offset > 500) {
-    offset = 0;
-  }
-  sliderLine.style.top = -offset + 'px';
-}
+const arrowBtn = document.querySelector('.support-ukraine-btn');
+const sliderContainer = document.querySelector(
+  '.support-ukraine .slider-container'
+);
+
+arrowBtn.addEventListener('click', () => {
+  sliderContainer.classList.toggle('show-all');
+});

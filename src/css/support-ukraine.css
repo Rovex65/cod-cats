@@ -1,40 +1,58 @@
 .title-wrapper {
   display: flex;
+  margin-bottom: 40px;
+}
+.support-ukraine-title {
+  font-size: 22px;
+  line-height: 1.09091;
+  letter-spacing: -0.04em;
+  margin-right: 12px;
 }
 .title-svg {
-  width: 20px;
-  height: 32px;
-  margin-left: 12px;
+  /* fill: #fff; */
+  fill: currentColor;
 }
 
 .support-ukraine {
+  color: #fff;
   position: relative;
-  padding-top: 24px;
-  padding-left: 40px;
+  padding: 24px 40px 20px;
   border-radius: 16px;
   width: 335px;
-  height: 352px;
-  background-image: linear-gradient(to bottom, #4f2ee8 10%, #ffffff 120%);
+  height: 460px;
+  box-shadow: 0 10px 10px 0 rgba(245, 245, 247, 0.1);
+  background: radial-gradient(
+    189.32% 190.93% at 59.76% -23.42%,
+    rgb(79, 46, 232) 18.02733987569809%,
+    rgb(255, 255, 255) 100%
+  );
 }
 .support-ukraine-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
-  bottom: 20px;
-  left: 152px;
-  width: 32px;
-  height: 32px;
+  bottom: 24px;
+  left: calc(50% - 19px);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
   border-radius: 50%;
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+  transition: 250ms ease-in-out;
+}
+.support-ukraine button:hover {
+  background: #eac645;
+}
 
-  border: #ffffff;
-}
-.svg-btn {
-  width: 14px;
-  height: 8px;
-}
-.img-list-unit {
+.slider-item {
   filter: brightness(0%) invert(100%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 32px;
 }
 .list-unit-link {
   display: flex;
@@ -52,15 +70,7 @@
   flex-direction: column;
   row-gap: 20px;
 }
-.support-ukraine-title {
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 32px;
-  color: #ffffff;
-  font-family: 'DM Sans';
-}
 .span-list-unit {
-  font-family: 'DM Sans';
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
@@ -83,26 +93,40 @@
   transition: var(--transition-rule);
 }
 @media screen and (min-width: 768px) {
+  .support-ukraine-title {
+    font-size: 24px;
+    line-height: 1.16667;
+  }
+
   .support-ukraine {
-    height: 472px;
-  }
-  .support-ukraine-btn {
-    width: 38px;
-    height: 38px;
-    bottom: 14px;
-    left: 149px;
-  }
-  .slider-support-ukraine {
-    height: 315px;
+    padding: 24px 40px;
+    height: 474px;
   }
 }
+
 @media screen and (min-width: 1280px) {
   .support-ukraine {
     width: 356px;
-    height: 490px;
   }
-  .support-ukraine-btn {
-    bottom: 24px;
-    left: 159px;
-  }
+}
+
+.support-ukraine .slider-container {
+  min-height: 292px;
+  max-height: 304px;
+  overflow-y: hidden;
+}
+
+.support-ukraine .inner-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: 250ms ease-in-out;
+}
+
+.support-ukraine .slider-container.show-all .inner-wrapper {
+  transform: translateY(-156px);
+}
+
+.support-ukraine .slider-container.show-all + button {
+  transform: rotateX(180deg);
 }
