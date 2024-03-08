@@ -47,6 +47,10 @@ function checkNoScrollBody(e) {
   if (window.innerWidth >= 768) {
     body.classList.remove('modal-is-open');
     burgerMenu.classList.toggle('burger-menu-show');
+    burgerToggle.innerHTML = `
+        <svg width="28" height="28">
+          <use href="${iconMenu}"></use>
+        </svg>`;
     window.removeEventListener('resize', checkNoScrollBody);
   } else {
     body.classList.add('modal-is-open');
