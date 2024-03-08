@@ -14,11 +14,12 @@
 }
 
 .support-ukraine {
+  flex-grow: 2;
   color: #fff;
   position: relative;
   padding: 24px 40px 20px;
   border-radius: 16px;
-  width: 335px;
+  max-width: 335px;
   height: 460px;
   box-shadow: 0 10px 10px 0 rgba(245, 245, 247, 0.1);
   background: radial-gradient(
@@ -107,6 +108,7 @@
 @media screen and (min-width: 1280px) {
   .support-ukraine {
     width: 356px;
+    flex-grow: 0;
   }
 }
 
