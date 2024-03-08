@@ -85,4 +85,4 @@
 		alt="${A}"
 	></img></a>
 </li>`}const q=document.querySelector(".support-ukraine-btn"),P=document.querySelector(".support-ukraine .slider-container");q.addEventListener("click",()=>{P.classList.toggle("show-all")});const b=document.getElementById("toggleSwitch");b.addEventListener("change",W);localStorage.getItem("darkMode")==="true"&&(b.checked=!0,document.body.classList.add("dark"));function W(){b.checked?(document.body.classList.add("dark"),localStorage.setItem("darkMode","true")):(document.body.classList.remove("dark"),localStorage.setItem("darkMode","false"))}export{$ as a,_ as b,AA as c,eA as d,MA as t};
-//# sourceMappingURL=switch-theme-7bdb5b6e.js.map
+//# sourceMappingURL=switch-theme-20cfd6cf.js.map
