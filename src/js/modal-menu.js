@@ -44,9 +44,7 @@ if (!foundActiveLink) {
 }
 
 function checkNoScrollBody(e) {
-  console.log(window.innerWidth);
   if (window.innerWidth >= 768) {
-    header.classList.remove('overflow-hidden');
     body.classList.remove('modal-is-open');
     burgerMenu.classList.toggle('burger-menu-show');
     window.removeEventListener('resize', checkNoScrollBody);
