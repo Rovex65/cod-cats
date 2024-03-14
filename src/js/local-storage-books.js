@@ -1,6 +1,8 @@
-export function updateShoppingList(e, bookData) {
+import { addData, getData } from './authorization';
+
+export async function updateShoppingList(e, bookData) {
   const target = e.target;
-  const shoppingList = getShoppingList();
+  const shoppingList = await getData();
 
   target.classList.toggle('added');
 
@@ -11,15 +13,13 @@ export function updateShoppingList(e, bookData) {
   removeFromShopList(target, shoppingList);
 }
 
-export function getShoppingList() {
-  return JSON.parse(localStorage.getItem('shoppingList')) || [];
-}
-
 function addToShopList(target, shoppingList, bookData) {
   const bookObj = createBookObject(bookData);
-  shoppingList.push(bookObj);
+  const newListObj = createFullObject(shoppingList);
 
-  setShoppingList(shoppingList, bookObj);
+  newListObj[bookObj._id] = bookObj;
+
+  addData(newListObj);
   target.textContent = 'Remove from the shopping list';
 }
 
@@ -28,26 +28,33 @@ function createBookObject(bookData) {
     bookData;
 
   return {
-    bookId: _id,
-    image: book_image,
+    _id,
+    book_image,
     title,
-    category: list_name,
+    list_name,
     description,
     author,
-    buyLinks: buy_links,
+    buy_links,
   };
 }
 
-function setShoppingList(shoppingList) {
-  localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
+function createFullObject(booksArr) {
+  const newData = {};
+
+  booksArr.forEach(item => {
+    newData[item._id] = createBookObject(item);
+  });
+
+  return newData;
 }
 
 // remove from SL
-function removeFromShopList(target, shoppingList) {
-  const newList = shoppingList.filter(
-    ({ bookId }) => bookId !== target.dataset.id
-  );
+export function removeFromShopList(target, shoppingList) {
+  const idToDelete =
+    target.dataset.id || target.closest('.delete-icon').dataset.id;
+  const newList = shoppingList.filter(({ _id }) => _id !== idToDelete);
+  const newListObj = createFullObject(newList);
 
-  setShoppingList(newList);
+  addData(newListObj);
   target.textContent = 'Add to shopping list';
 }

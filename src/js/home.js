@@ -1,31 +1,28 @@
 import { templateTopBooks } from './template-functions';
 import { templateFullCategory } from './template-functions';
-import { getShoppingList } from './local-storage-books';
 import { updateShoppingList } from './local-storage-books';
 import { onModalShow } from './pop-up';
 import { BookApi } from './book-api';
-import { showLoader, closeLoader } from './loader';
-import { showError } from './notification';
+
+import { auth, getData, initListenersForAuth } from './authorization';
+initListenersForAuth();
 
 const booksApi = new BookApi();
 const booksWrap = document.querySelector('.books-wrapper');
 
-function renderTopBooks(booksData) {
+function renderBooks(booksData) {
   const markup = templateTopBooks(booksData);
-  booksWrap.innerHTML = markup;
+  booksWrap.insertAdjacentHTML('beforeend', markup);
 }
 
 // get top books
 async function getTopBooksFromApi() {
-  clearBooksWrap();
-  showLoader();
   try {
     const data = await booksApi.getTopBooks();
-    renderTopBooks(data);
+    renderBooks(data);
   } catch (err) {
-    showError(err.message);
+    console.log(err);
   }
-  closeLoader();
 }
 
 getTopBooksFromApi();
@@ -54,34 +51,34 @@ function renderCategoryBooks(booksData) {
 }
 
 async function getCategoryBooks(target) {
-  clearBooksWrap();
-  showLoader();
   try {
     categoryTitle = target.dataset.category;
     setActiveCategory(categoryTitle);
 
     if (categoryTitle === 'all-categories') {
+      booksWrap.innerHTML = '';
+
       const data = await booksApi.getTopBooks();
-      renderTopBooks(data);
+      renderBooks(data);
     } else {
       const data = await booksApi.getBooksByCategory(categoryTitle);
       renderCategoryBooks(data);
     }
   } catch (err) {
-    showError(err.message);
+    console.log(err);
   }
-  closeLoader();
 }
 
 // get book by id
-function checkBookStatus(currentId) {
-  const shoppingList = getShoppingList();
+async function checkBookStatus(currentId) {
+  const shoppingList = await getData();
 
-  return shoppingList.find(({ bookId }) => bookId === currentId) || false;
+  return shoppingList.find(({ _id }) => _id === currentId) || false;
 }
 
-function getShoppingBtnData(currentId) {
-  const status = checkBookStatus(currentId);
+async function getShoppingBtnData(currentId) {
+  // const status = await checkBookStatus(currentId);
+  const status = !auth.currentUser ? false : await checkBookStatus(currentId);
 
   if (status) {
     return {
@@ -102,10 +99,10 @@ export async function getBookById(target) {
     const bookId = target.closest('.book-item').dataset.bookId;
     bookData = await booksApi.getBookById(bookId);
 
-    const btnData = getShoppingBtnData(bookId);
+    const btnData = await getShoppingBtnData(bookId);
     onModalShow(bookData, bookId, btnData);
   } catch (err) {
-    showError(err.message);
+    console.log(err);
   }
 }
 
@@ -129,7 +126,3 @@ document.addEventListener('click', e => {
     updateShoppingList(e, bookData);
   }
 });
-
-function clearBooksWrap() {
-  booksWrap.innerHTML = '';
-}
